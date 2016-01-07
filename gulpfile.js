@@ -41,9 +41,9 @@ var
 
 		browserSync : {
 			baseDir : './dist',
-			watchPaths : ['dist/*.html', 'dist/css/*.css', 'dist/js/*.js']
+			watchPaths : ['dist/*.html', 'dist/css/*.css', 'dist/js/**/*.js', 'dist/img/**/*.{jpg,jpeg,gif,png,svg}']
 		}
-	}
+	};
 
 /* --------- jade --------- */
 
@@ -51,7 +51,7 @@ gulp.task('jade', function() {
 	gulp.src(paths.jade.compiled)
 		.pipe(plumber())
 		.pipe(jade({
-			pretty: '\t',
+			pretty: '\t'
 		}))
 		.pipe(gulp.dest(paths.jade.destination));
 });
@@ -73,6 +73,7 @@ gulp.task('compass', function() {
 
 gulp.task('sync', function() {
 	browserSync.init({
+		port: 9000,
 		server: {
 			baseDir: paths.browserSync.baseDir
 		}
@@ -112,3 +113,17 @@ gulp.task('watch', function(){
 /* --------- default --------- */
 
 gulp.task('default', ['jade', 'compass', 'plugins', 'scripts', 'sync', 'watch']);
+
+
+/* ------ Pretty error view ------ */
+var log = function (error) {
+	console.log([
+		'',
+		"----------ERROR MESSAGE START----------",
+		("[" + error.name + " in " + error.plugin + "]"),
+		error.message,
+		"----------ERROR MESSAGE END----------",
+		''
+	].join('\n'));
+	this.end();
+};
