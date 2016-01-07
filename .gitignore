@@ -41,3 +41,5 @@ Thumbs.db
 /node_modules
 /- dev/bower
 /.idea
+/bower_components
+/- dev/scripts/_plugins
