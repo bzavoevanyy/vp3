@@ -21,6 +21,21 @@ var
 			destination : 'dist/.'
 		},
 
+		images : {
+			location    : '- dev/img/**/*.{jpeg,jpg,png,gif,svg}',
+			destination : 'dist/img/.'
+		},
+
+		fonts : {
+			location    : '- dev/fonts/**/*.{eot,svg,ttf,woff,woff2}',
+			destination : 'dist/fonts/.'
+		},
+
+		favicon : {
+			location    : '- dev/favicon/**/*.{png,xml,json,svg,ico}',
+			destination : 'dist/favicon/.'
+		},
+
 		scss : {
 			location    : '- dev/styles/**/*.scss',
 			entryPoint  : 'dist/css/main.css'
@@ -41,7 +56,14 @@ var
 
 		browserSync : {
 			baseDir : './dist',
-			watchPaths : ['dist/*.html', 'dist/css/*.css', 'dist/js/**/*.js', 'dist/img/**/*.{jpg,jpeg,gif,png,svg}']
+			watchPaths : [
+				'dist/*.html',
+				'dist/css/*.css',
+				'dist/js/**/*.js',
+				'dist/img/**/*.{jpg,jpeg,gif,png,svg}',
+				'dist/fonts/**/*.{eot,svg,ttf,woff,woff2}',
+				'dist/favicon/**/*.{png,xml,json,svg,ico}'
+			]
 		}
 	};
 
@@ -54,6 +76,30 @@ gulp.task('jade', function() {
 			pretty: '\t'
 		}))
 		.pipe(gulp.dest(paths.jade.destination));
+});
+
+/* --------- images copy --------- */
+
+gulp.task('images', function() {
+	gulp.src(paths.images.location)
+			.pipe(plumber())
+			.pipe(gulp.dest(paths.images.destination));
+});
+
+/* --------- fonts copy --------- */
+
+gulp.task('fonts', function() {
+	gulp.src(paths.fonts.location)
+			.pipe(plumber())
+			.pipe(gulp.dest(paths.fonts.destination));
+});
+
+/* --------- favicon copy --------- */
+
+gulp.task('favicon', function() {
+	gulp.src(paths.favicon.location)
+			.pipe(plumber())
+			.pipe(gulp.dest(paths.favicon.destination));
 });
 
 /* --------- scss-compass --------- */
@@ -107,12 +153,17 @@ gulp.task('watch', function(){
 	gulp.watch(paths.scss.location, ['compass']);
 	gulp.watch(paths.js.location, ['scripts']);
 	gulp.watch(paths.js.plugins, ['plugins']);
+	gulp.watch(paths.images.location, ['images']);
+	gulp.watch(paths.favicon.location, ['favicon']);
+	gulp.watch(paths.fonts.location, ['fonts']);
 	gulp.watch(paths.browserSync.watchPaths).on('change', browserSync.reload);
 });
 
-/* --------- default --------- */
+/* --------- build --------- */
+gulp.task('build', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts']);
 
-gulp.task('default', ['jade', 'compass', 'plugins', 'scripts', 'sync', 'watch']);
+/* --------- default --------- */
+gulp.task('default', ['build', 'sync', 'watch']);
 
 
 /* ------ Pretty error view ------ */
