@@ -18,30 +18,30 @@ var
 		jade : {
 			location    : '- dev/markups/**/*.jade',
 			compiled    : '- dev/markups/_pages/*.jade',
-			destination : '.'
+			destination : 'dist/.'
 		},
 
 		scss : {
 			location    : '- dev/styles/**/*.scss',
-			entryPoint  : 'css/main.css'
+			entryPoint  : 'dist/css/main.css'
 		},
 
 		compass : {
 			configFile  : 'config.rb',
-			cssFolder   : 'css',
+			cssFolder   : 'dist/css',
 			scssFolder  : '- dev/styles',
-			imgFolder   : 'img'
+			imgFolder   : '- dev/img'
 		},
 
 		js : {
 			location    : '- dev/scripts/main.js',
 			plugins     : '- dev/scripts/_plugins/*.js',
-			destination : 'js'
+			destination : 'dist/js'
 		},
 
 		browserSync : {
-			baseDir : './',
-			watchPaths : ['*.html', 'css/*.css', 'js/*.js']
+			baseDir : './dist',
+			watchPaths : ['dist/*.html', 'dist/css/*.css', 'dist/js/*.js']
 		}
 	}
 
