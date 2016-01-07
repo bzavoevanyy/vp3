@@ -1,3 +1,6 @@
 {
-  "name" : "vp3 LS web 11.15"
+  "name": "vp3 LS web 11.15",
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
 }

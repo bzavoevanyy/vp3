@@ -5,7 +5,6 @@ var
 	compass     = require('gulp-compass'),
 	jade        = require('gulp-jade'),
 	browserSync = require('browser-sync').create(),
-	browserify  = require('gulp-browserify'),
 	uglify      = require('gulp-uglify'),
 	rename      = require("gulp-rename"),
 	plumber     = require('gulp-plumber'),
@@ -49,9 +48,11 @@ var
 		},
 
 		js : {
-			location    : '- dev/scripts/main.js',
-			plugins     : '- dev/scripts/_plugins/*.js',
-			destination : 'dist/js'
+			location    	: '- dev/scripts/main.js',
+			plugins     	: '- dev/scripts/_plugins/*.js',
+			pluginsDest		: '- dev/scripts/_plugins/',
+			destination 	: 'dist/js',
+			jqueryFile		: 'bower_components/jquery/dist/jquery.js'
 		},
 
 		browserSync : {
@@ -126,9 +127,16 @@ gulp.task('sync', function() {
 	});
 });
 
+/* --------- JQuery --------- */
+
+gulp.task('jquery', function() {
+	return gulp.src(paths.js.jqueryFile)
+			.pipe(gulp.dest(paths.js.pluginsDest));
+});
+
 /* --------- plugins --------- */
 
-gulp.task('plugins', function() {
+gulp.task('plugins', ['jquery'], function() {
 	return gulp.src(paths.js.plugins)
 		.pipe(plumber())
 		.pipe(concat('plugins.min.js'))
@@ -136,7 +144,7 @@ gulp.task('plugins', function() {
 		.pipe(gulp.dest(paths.js.destination));
 });
 
-/* --------- plugins --------- */
+/* --------- My scripts --------- */
 
 gulp.task('scripts', function() {
 	return gulp.src(paths.js.location)
