@@ -4,4 +4,7 @@ $(document).ready(function () {
 
     // Watermark Position Module init
     wPosition.init();
+
+    // Uploud images
+    uploudImages.init();
 });
