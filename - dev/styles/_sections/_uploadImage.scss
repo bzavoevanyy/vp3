@@ -1,0 +1,25 @@
+
+.input-group__fake-input{
+  border: 1px solid #a3b0be;
+  border-radius: 3px;
+  width: 219px;
+  height: 23px;
+  margin: 0 20px;
+  background: #f1f1f5;
+  position: relative;
+  margin-bottom: 25px;
+  &:after{
+  	content: ' ';
+  	display: inline-block;
+		width: 37px;
+		height: 25px;
+		border-radius: 0 3px 3px 0;
+		background: $maincolor;
+		position: absolute;
+		top: -1px;
+		right: -1px;
+		background-image: url('../img/sprite.png');
+		background-position: -2px -6px;
+		cursor: pointer;
+  }
+}
