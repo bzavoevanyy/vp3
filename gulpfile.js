@@ -48,7 +48,7 @@ var
 		},
 
 		js : {
-			location    	: '- dev/scripts/main.js',
+			location    	: '- dev/scripts/*.js',
 			plugins     	: '- dev/scripts/_plugins/*.js',
 			pluginsDest		: '- dev/scripts/_plugins/',
 			destination 	: 'dist/js',
@@ -149,8 +149,8 @@ gulp.task('plugins', ['jquery'], function() {
 gulp.task('scripts', function() {
 	return gulp.src(paths.js.location)
 		.pipe(plumber())
+		.pipe(concat('main.min.js'))
 		.pipe(uglify())
-		.pipe(rename('main.min.js'))
 		.pipe(gulp.dest(paths.js.destination));
 });
 
