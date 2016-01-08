@@ -20,13 +20,10 @@ html
         <p class="chromeframe">Похоже, что ты используешь устаревший браузер, друг. Пожалуйста, <a href="http://browsehappy.com/">скачай новый браузер абсолютно бесплатно</a> или <a href="http://www.google.com/chromeframe/?redirect=true">активируй Google Chrome Frame</a></p>
         <![endif]-->
 
-        .wrapper
-            .maincontent
-                include _common/_header
+        .maincontent
+            include _common/_content
 
-                block content
-
-        include _common/_footer
+            include _common/_footer
 
         script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
         script.
