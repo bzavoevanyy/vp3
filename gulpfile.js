@@ -52,7 +52,9 @@ var
 			plugins     	: '- dev/scripts/_plugins/*.js',
 			pluginsDest		: '- dev/scripts/_plugins/',
 			destination 	: 'dist/js',
-			jqueryFile		: 'bower_components/jquery/dist/jquery.js'
+			dest_vendors	: 'dist/js/_vendors',
+			jqueryFile		: 'bower_components/jquery/dist/jquery.js',
+			jqueryUIFile	: 'bower_components/jquery-ui/jquery-ui.js'
 		},
 
 		browserSync : {
@@ -131,12 +133,17 @@ gulp.task('sync', function() {
 
 gulp.task('jquery', function() {
 	return gulp.src(paths.js.jqueryFile)
-			.pipe(gulp.dest(paths.js.pluginsDest));
+			.pipe(gulp.dest(paths.js.dest_vendors));
 });
+/* --------- JQueryUI --------- */
 
+gulp.task('jqueryUI', function() {
+	return gulp.src(paths.js.jqueryUIFile)
+		.pipe(gulp.dest(paths.js.pluginsDest));
+});
 /* --------- plugins --------- */
 
-gulp.task('plugins', ['jquery'], function() {
+gulp.task('plugins', ['jquery', 'jqueryUI'], function() {
 	return gulp.src(paths.js.plugins)
 		.pipe(plumber())
 		.pipe(concat('plugins.min.js'))

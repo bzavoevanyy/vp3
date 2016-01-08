@@ -1,3 +1,8 @@
+
 $(document).ready(function(){
-    console.log('JQuery works');
+    $('.watermark').draggable({drag:function(event,ui){
+        $('.top').val(ui.position.top);
+        $('.left').val(ui.position.left);
+
+    }});
 });
