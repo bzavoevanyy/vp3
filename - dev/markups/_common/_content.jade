@@ -3,7 +3,7 @@ main.container
 		h1.generator__title Генератор водяных знаков
 		.generator__box
 
-	form.settings(action="formUpload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
+	form.settings(action="upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
 		h2.settings__title Настройки
 
 		// Начало блока загрузки изображений
@@ -11,13 +11,13 @@ main.container
 			.settings-block__title Исходное изображение
 			label.input-group
 				.input-group__fake-input
-				input.input-group__input(type="file" id="source-file" name="upload")
+				input.input-group__input(id="source-file" type="file" name="files[]" data-url="upload.php" multiple)
 				//рекомендую js вешать на id
 
 			.settings-block__title Водяной знак
 			label.input-group
 				.input-group__fake-input
-				input.input-group__input(type="file" id="mark-file" name="upload2")
+				input.input-group__input(id="mark-file" type="file" name="files[]" data-url="upload.php" multiple)
 				//рекомендую js вешать на id
 		// Конец блока загрузки изображений
 

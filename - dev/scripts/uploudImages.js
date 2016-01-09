@@ -10,10 +10,10 @@ var uploudImages = (function () {
 	var _setUpListners = function () {
 
 		var sendData = true,
-				formWithFile = $("#form-add-files");
+				formWithFile = $("#form-upload");
 				
-		$('#source-file').fileupload({
-			url: 'add-project.php',
+		$('#fileupload').fileupload({
+			url: 'upload.php',
 			type: 'POST',
 			dataType : 'json',
 			autoUpload : false,
@@ -33,6 +33,9 @@ var uploudImages = (function () {
 			done: function(e, data){
 				sendData = true;
 				if (data.result.status == 'success') {
+          $.each(data.result.files, function (index, file) {
+              $('<p/>').text(file.name).appendTo('.input-group__fake-input');
+          });					
 					setTimeout("location.reload();", 1000);
 				} else {
 					console.log(data.result.text);
@@ -50,5 +53,4 @@ var uploudImages = (function () {
 	};
 
 })();
-
 
