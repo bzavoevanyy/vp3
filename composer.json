@@ -1,0 +1,13 @@
+{
+  "name": "vp3/vp3",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "websafe/lib-websafe-blueimp-jquery-file-upload-handler": "v9.11.2",
+    "blueimp/jquery-file-upload": "9.11.2"
+  }
+}
