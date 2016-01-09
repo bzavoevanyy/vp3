@@ -12,4 +12,23 @@
 
 @import "_misc/adjustment";
 
+.main {
+  position: relative;
+  float : left;
+  width: 650px;
+  height: 550px;
+  background-image: url('../img/cat.jpg');
+  background-size : 650px 550px;
+}
+.watermark {
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  top :0;
+  left:0;
+}
 
+.img {
+  width: 150px;
+  height: 100px;
+}
