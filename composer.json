@@ -7,7 +7,6 @@
     }
   ],
   "require": {
-    "websafe/lib-websafe-blueimp-jquery-file-upload-handler": "v9.11.2",
     "blueimp/jquery-file-upload": "9.11.2"
   }
 }
