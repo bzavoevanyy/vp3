@@ -1,15 +1,37 @@
-@import "compass";
+	@import "compass";
 
-/* --------- normalize --------- */
+	/* --------- normalize --------- */
+	@import "_misc/normalize";
 
-@import "_misc/normalize";
+	/* --------- mixins --------- */
+	@import "_misc/mixins";
 
-/* --------- mixins --------- */
+	/* --------- adjustment --------- */
+	//	@import "_misc/adjustment";
 
-@import "_misc/mixins";
+	/* --------- шрифты --------- */
+	@import "_misc/fonts";
 
-/* --------- adjustment --------- */
+	/* --------- стили страницы и общие стили --------- */
+	@import "_sections/index";
 
-@import "_misc/adjustment";
+	/* --------- блок с водяным знаком --------- */
+	@import "_sections/generator";
 
+	/* --------- блок с настройками генератора --------- */
+	@import "_sections/settings";
 
+	/* ----- фейковые инпуты для загрузки картинок ----- */
+	@import "_sections/uploadImage";
+
+	/* ------ положение и координаты ватермарка ------ */
+	@import "_sections/position";
+
+	/* ------ слайдер прозрачности ------ */
+	@import "_sections/opacitySlider";
+
+	/* ------ кнопки сброса и загрузки ------ */
+	@import "_sections/buttons";
+
+	/* ------ футер ------ */
+	@import "_sections/footer";
