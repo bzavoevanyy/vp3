@@ -2,7 +2,7 @@
 var wPosition = (function () {
 
     // Module init
-    function init () {
+    function init() {
         console.log('[ wPosition works ... ]');
 
         // Set Up Listeners
@@ -11,15 +11,22 @@ var wPosition = (function () {
     }
 
     // Event Listeners
-    function _setUpListners () {
+    function _setUpListners() {
 
-        // Position label click
-        $('.position-label').on('click', function(){
-            var $this = $(this),
-                parent = $this.closest('.settings-block__position');
-
-            console.log($this);
+        // Position watermark on click by grid
+        $('.input-group__input').on('change', function(){
+            _changePositionByClick(this);
         });
+    }
+
+    function _changePositionByClick(element){
+        var label = $(element),
+            currentId = label.attr('id'),
+            grid = $('.generator__bg-grid'),
+            gridPositionItem = grid.find("[data-position='" + currentId + "']"),
+            watermark = $('.generator__watermark-wrap');
+
+        watermark.stop(true, true).fadeOut(200).appendTo(gridPositionItem).stop(true, true).fadeIn(200);
     }
 
     // Public Methods

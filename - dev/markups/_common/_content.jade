@@ -1,3 +1,5 @@
+- var positions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right']
+
 main.container
 	.generator
 		h1.generator__title Генератор водяных знаков
@@ -5,8 +7,12 @@ main.container
 			.generator__bg-image-wrap
 				img(src="img/teide.jpg" alt="teide").generator__bg-image
 
-			.generator__watermark-wrap
-				img(src="img/icon-blue.jpg" alt="icon").generator__watermark-image
+				ul.generator__bg-grid
+					each item, index in positions
+						li(data-position="#{item}").generator__bg-grid-item
+							if (index === 0)
+								.generator__watermark-wrap
+									img(src="img/icon-blue.jpg" alt="icon").generator__watermark-image
 
 	form.settings(action="upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
 		h2.settings__title Настройки
@@ -32,9 +38,8 @@ main.container
 			.settings-block__title.settings-block__title_margin Положение
 
 			.settings-block__position
-				- var positions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right']
 				each position in positions
-					label(id="position-#{position}").position-label
+					label.position-label
 						input.input-group__input(type="radio" id="#{position}" value="#{position}" name="position")
 						.position-label__fake-radio
 
@@ -51,7 +56,7 @@ main.container
 					.coords-settings__top
 					.coords-settings__bottom
 			.clearfix
-		// Конец блока выбора положения водяного знака	
+		// Конец блока выбора положения водяного знака
 
 
 		// Начало блока слайдера прозрачности

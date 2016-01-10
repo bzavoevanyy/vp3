@@ -41,8 +41,37 @@
   }
 
   &__watermark-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  &__watermark-image {
     position: absolute;
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
+    margin: auto;
+  }
+
+  &__bg-grid {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    @extend %clearfix;
+  }
+
+  &__bg-grid-item {
+    float: left;
+    width: 33.333%;
+    height: 33.333%;
+    position: relative;
   }
 }
