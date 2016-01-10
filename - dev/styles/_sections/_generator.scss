@@ -24,4 +24,28 @@
 	height: 534px;
 	background: #f1f1f5;
 	margin: 0 auto;
+	position: relative;
+}
+.generator__box-source {
+	position: absolute;
+	width: 651px;
+	height: 534px;
+	@include absolute-center();
+}
+.img-source {
+	position: absolute;
+	width:651px;
+	height: 534px;
+}
+.generator__box-watermark {
+	position: absolute;
+	width: 0;
+	height: 0;
+	top :0;
+	left:0;
+}
+.img-watermark {
+	position: absolute;
+	width:0;
+	height: 0;
 }
