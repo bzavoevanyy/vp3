@@ -5,6 +5,7 @@ var wPosition = (function () {
     function init () {
         console.log('[ wPosition works ... ]');
         //_setUpListners();
+
     }
 
     // Event Listeners
