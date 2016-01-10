@@ -1,0 +1,32 @@
+
+.settings-block__button{
+	box-szing: border-box;
+	border: none;
+  border-radius: 3px;
+  width: 97px;
+  height: 40px;
+  font-family: "RobotoMedium";
+  font-weight: normal;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 56px;
+}
+
+.settings-block__button_reset{
+	background: #c1cfd9;
+	margin-left: 11px;
+	&:hover{
+		border: 1px solid #616d65;
+		background: -webkit-linear-gradient(top, #616d65 0%,#B1BEC6 100%);
+		opacity: 0.5;
+	}
+}
+
+.settings-block__button_submit{
+	background: $maincolor;
+	margin-left: 40px;
+	&:hover{
+		border: 1px solid #da6d66;
+		background: -webkit-radial-gradient(center, ellipse cover, #e3736c 0%,#da6d66 100%);
+	}
+}

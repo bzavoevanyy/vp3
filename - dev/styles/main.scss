@@ -1,38 +1,37 @@
-@import "compass";
+	@import "compass";
 
-/* --------- normalize --------- */
+	/* --------- normalize --------- */
+	@import "_misc/normalize";
 
-@import "_misc/normalize";
+	/* --------- mixins --------- */
+	@import "_misc/mixins";
 
-/* --------- mixins --------- */
+	/* --------- adjustment --------- */
+	//	@import "_misc/adjustment";
 
-@import "_misc/mixins";
+	/* --------- шрифты --------- */
+	@import "_misc/fonts";
 
-/* --------- adjustment --------- */
+	/* --------- стили страницы и общие стили --------- */
+	@import "_sections/index";
 
-@import "_misc/adjustment";
+	/* --------- блок с водяным знаком --------- */
+	@import "_sections/generator";
 
-.main {
-  position: relative;
-  float : left;
-  width: 650px;
-  height: 550px;
-  background-image: url('../img/cat.jpg');
-  background-size : 650px 550px;
-}
-.img {
-  width : 100%;
-  height: 100%;
-}
-.watermark {
-  width: 150px;
-  height: 100px;
-  position: absolute;
-  top :0;
-  left:0;
-}
+	/* --------- блок с настройками генератора --------- */
+	@import "_sections/settings";
 
-.imgw {
-  width: 150px;
-  height: 100px;
-}
+	/* ----- фейковые инпуты для загрузки картинок ----- */
+	@import "_sections/uploadImage";
+
+	/* ------ положение и координаты ватермарка ------ */
+	@import "_sections/position";
+
+	/* ------ слайдер прозрачности ------ */
+	@import "_sections/opacitySlider";
+
+	/* ------ кнопки сброса и загрузки ------ */
+	@import "_sections/buttons";
+
+	/* ------ футер ------ */
+	@import "_sections/footer";
