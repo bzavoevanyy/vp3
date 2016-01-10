@@ -8,7 +8,8 @@ var
 	uglify      = require('gulp-uglify'),
 	rename      = require("gulp-rename"),
 	plumber     = require('gulp-plumber'),
-	concat      = require('gulp-concat');
+	concat      = require('gulp-concat'),
+	order 		= require('gulp-order');
 
 /* --------- paths --------- */
 
@@ -56,6 +57,7 @@ var
 			jqueryFile		: 'bower_components/jquery/dist/jquery.js',
 			jqueryUIFile	: 'bower_components/jquery-ui/jquery-ui.js',
 			jqueryFileUp	: 'bower_components/blueimp-file-upload/js/jquery.fileupload.js',
+			order			: ['jquery.js', 'jquery-ui.js', 'jquery.fileupload.js']
 		},
 
 		browserSync : {
@@ -134,7 +136,7 @@ gulp.task('sync', function() {
 
 gulp.task('jquery', function() {
 	return gulp.src(paths.js.jqueryFile)
-			.pipe(gulp.dest(paths.js.dest_vendors));
+			.pipe(gulp.dest(paths.js.pluginsDest));
 });
 /* --------- JQueryUI --------- */
 
@@ -154,8 +156,8 @@ gulp.task('jquery-file-upload', function() {
 gulp.task('plugins', ['jquery', 'jqueryUI','jquery-file-upload'], function() {
 	return gulp.src(paths.js.plugins)
 		.pipe(plumber())
+		.pipe(order(paths.js.order))
 		.pipe(concat('plugins.min.js'))
-		.pipe(uglify())
 		.pipe(gulp.dest(paths.js.destination));
 });
 
