@@ -9,21 +9,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     //get post file
     $file = $_FILES["img1"];
 
+    $valid = true;
+
     //additional verification on the file size
     if ($file['size'] == 0) {
-        echo "Вы не выбрали первый файл";
         $data['status'] = 'error';
         $data['message'] = 'Вы не выбрали первый файл';
-        exit;
+        $valid = false;
+    } elseif ($file['size'] > 5242880) {
+        $data['status'] = 'error';
+        $data['message'] = 'Файл превышает допустимый размер в 5Мб';
+        $valid = false;
     }
 
     // check upload dir
-    if(!file_exists(__DIR__.'/uploads/')){
+    if( (!file_exists(__DIR__.'/uploads/')) && $valid ){
         mkdir(__DIR__.'/uploads/', 777);
     }
 
     //check - file is loaded?
-    if(is_uploaded_file($file["tmp_name"])) {
+    if( (is_uploaded_file($file["tmp_name"])) && $valid ) {
         //transferring files
         $filename = $file['name'];
         $filename_new = time().'_'.$filename;
@@ -31,16 +36,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $filelink = 'uploads/'.$filename_new;
 
         $data['status'] = 'success';
-        $data['message'] = 'Файл успешно загружен';
+        $data['message'] = 'Файл успешно загружен '.$file['type'];
         $data['filelink'] = $filelink;
     } else {
-        echo "Ошибка загрузки файлов на сервер.";
         $data['status'] = 'error';
         $data['message'] = 'Ошибка загрузки файла на сервер.';
     }
 
 } else {
-    echo "Что-то пошло не так!";
     $data['status'] = 'error';
     $data['message'] = 'Что-то пошло не так!';
 }
