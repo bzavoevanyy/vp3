@@ -1,4 +1,10 @@
+$(document).ready(function () {
+    // jQuery test
+    console.log('[ jQuery works ... ]');
 
-$(document).ready(function(){
-    console.log('JQuery works');
+    // Watermark Position Module init
+    wPosition.init();
+
+    // Uploud images
+    uploudImages.init();
 });
