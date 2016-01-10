@@ -8,7 +8,7 @@ main.container
 			.generator__watermark-wrap
 				img(src="img/icon-blue.jpg" alt="icon").generator__watermark-image
 
-	form.settings
+	form.settings(action="upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
 		h2.settings__title Настройки
 
 		// Начало блока загрузки изображений
@@ -16,13 +16,13 @@ main.container
 			.settings-block__title Исходное изображение
 			label.input-group
 				.input-group__fake-input
-				input.input-group__input(type="file" id="source-file")
+				input.input-group__input(id="source-file" type="file" name="files[]" data-url="upload.php" multiple)
 				//рекомендую js вешать на id
 
 			.settings-block__title Водяной знак
 			label.input-group
 				.input-group__fake-input
-				input.input-group__input(type="file" id="mark-file") 
+				input.input-group__input(id="mark-file" type="file" name="files[]" data-url="upload.php" multiple)
 				//рекомендую js вешать на id
 		// Конец блока загрузки изображений
 
