@@ -1,27 +1,48 @@
+.generator {
+  box-sizing: border-box;
+  width: 700px;
+  height: 670px;
+  float: left;
+  background: rgba(46, 54, 65, 0.64);
+  padding: 24px;
+  padding-top: 8px;
 
-.generator{
-	box-sizing: border-box;
-	width: 700px;
-	height: 670px;
-	float: left;
-	background: rgba(46, 54, 65, 0.64);
-	padding: 24px;
-	padding-top: 8px;
-}
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-family: "SegoeUILight";
+    font-weight: normal;
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 48px;
+  }
 
-.generator__title{
-	margin: 0;
-	padding: 0;
-	font-family: "SegoeUILight";
-	font-weight: normal;
-	color: #fff;
-	font-size: 36px;
-	margin-bottom: 48px;
-}
+  &__box {
+    width: 651px;
+    height: 534px;
+    background: #f1f1f5;
+    margin: 0 auto;
+    position: relative;
+  }
 
-.generator__box{
-	width: 651px;
-	height: 534px;
-	background: #f1f1f5;
-	margin: 0 auto;
+  &__bg-image-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__bg-image {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__watermark-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }

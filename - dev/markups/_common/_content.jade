@@ -2,8 +2,11 @@ main.container
 	.generator
 		h1.generator__title Генератор водяных знаков
 		.generator__box
-			.generator__image-wrap
-				img(src="img/cat.jpg" alt="cat").generator__image
+			.generator__bg-image-wrap
+				img(src="img/teide.jpg" alt="teide").generator__bg-image
+
+			.generator__watermark-wrap
+				img(src="img/icon-blue.jpg" alt="icon").generator__watermark-image
 
 	form.settings
 		h2.settings__title Настройки
@@ -31,7 +34,7 @@ main.container
 			.settings-block__position
 				- var positions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right']
 				each position in positions
-					label.position-label
+					label(id="position-#{position}").position-label
 						input.input-group__input(type="radio" id="#{position}" value="#{position}" name="position")
 						.position-label__fake-radio
 
