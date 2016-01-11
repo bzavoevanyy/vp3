@@ -61,6 +61,11 @@ var
             order: ['jquery.js', 'jquery-ui.js', 'jquery.iframe-transport.js', 'jquery.fileupload.js']
         },
 
+        server: {
+            location: '- dev/php/**/*.php',
+            destination: 'dist/server'
+        },
+
         browserSync: {
             baseDir: './dist',
             watchPaths: [
@@ -181,8 +186,15 @@ gulp.task('scripts', function () {
     return gulp.src(paths.js.location)
         .pipe(plumber())
         .pipe(concat('main.min.js'))
-        .pipe(uglify())
         .pipe(gulp.dest(paths.js.destination));
+});
+
+/* --------- Server --------- */
+
+gulp.task('server', function () {
+    return gulp.src(paths.server.location)
+        .pipe(plumber())
+        .pipe(gulp.dest(paths.server.destination));
 });
 
 /* --------- watch --------- */
@@ -195,11 +207,12 @@ gulp.task('watch', function () {
     gulp.watch(paths.images.location, ['images']);
     gulp.watch(paths.favicon.location, ['favicon']);
     gulp.watch(paths.fonts.location, ['fonts']);
+    gulp.watch(paths.server.location, ['server']);
     gulp.watch(paths.browserSync.watchPaths).on('change', browserSync.reload);
 });
 
 /* --------- build --------- */
-gulp.task('build', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts']);
+gulp.task('build', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts', 'server']);
 
 /* --------- default --------- */
 gulp.task('default', ['build', 'sync', 'watch']);
