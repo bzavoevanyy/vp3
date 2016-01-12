@@ -43,3 +43,7 @@ Thumbs.db
 /.idea
 /bower_components
 /- dev/scripts/_plugins
+composer.phar
+composer.lock
+/- dev/php/js/plugins
+/vendor
