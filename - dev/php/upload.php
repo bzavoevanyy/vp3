@@ -7,7 +7,13 @@
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     //get post file
-    $file = $_FILES["img1"];
+    if (isset($_FILES["source-file"]) && !empty($_FILES["source-file"])){
+        $file = $_FILES["source-file"];
+    }
+
+    if (isset($_FILES["watermark-file"]) && !empty($_FILES["watermark-file"])){
+        $file = $_FILES["watermark-file"];
+    }
 
     $valid = true;
 

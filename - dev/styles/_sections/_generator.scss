@@ -25,53 +25,31 @@
     position: relative;
   }
 
-  &__bg-image-wrap {
+  &__box-source {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    width: 651px;
+    height: 534px;
+    @include absolute-center();
+
+    &-image {
+      position: absolute;
+      width: 651px;
+      height: 534px;
+    }
   }
 
-  &__bg-image {
-    display: block;
-    margin: auto;
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  &__watermark-wrap {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-
-  &__watermark-image {
+  &__box-watermark {
     position: absolute;
+    width: 0;
+    height: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    margin: auto;
-  }
+    cursor: pointer;
 
-  &__bg-grid {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    @extend %clearfix;
-  }
-
-  &__bg-grid-item {
-    float: left;
-    width: 33.333%;
-    height: 33.333%;
-    position: relative;
+    &-image {
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
   }
 }

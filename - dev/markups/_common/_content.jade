@@ -4,32 +4,25 @@ main.container
 	.generator
 		h1.generator__title Генератор водяных знаков
 		.generator__box
-			.generator__bg-image-wrap
-				img(src="img/teide.jpg" alt="teide").generator__bg-image
+			.generator__box-source
+				img(src='' alt='').generator__box-source-image
+				.generator__box-watermark
+					img(src='' alt='').generator__box-watermark-image
 
-				ul.generator__bg-grid
-					each item, index in positions
-						li(data-position="#{item}").generator__bg-grid-item
-							if (index === 0)
-								.generator__watermark-wrap
-									img(src="img/icon-blue.jpg" alt="icon").generator__watermark-image
-
-	form.settings(action="upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
+	form.settings(action="server/upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
 		h2.settings__title Настройки
 
 		// Начало блока загрузки изображений
 		.settings-block
 			.settings-block__title Исходное изображение
 			label.input-group
-				.input-group__fake-input
-				input.input-group__input(id="source-file" type="file" name="files[]" data-url="upload.php" multiple)
-				//рекомендую js вешать на id
+				.input-group__fake-input.source
+				input.input-group__input(id="source-file" type="file" name="source-file")
 
 			.settings-block__title Водяной знак
 			label.input-group
-				.input-group__fake-input
-				input.input-group__input(id="mark-file" type="file" name="files[]" data-url="upload.php" multiple)
-				//рекомендую js вешать на id
+				.input-group__fake-input.watermark
+				input.input-group__input(id="watermark-file" type="file" name="watermark-file")
 		// Конец блока загрузки изображений
 
 
