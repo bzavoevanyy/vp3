@@ -6,9 +6,7 @@ var wPosition = (function () {
         console.log('[ wPosition works ... ]');
 
         // Set Up Listeners
-        //_setUpListners();
-
-        //_initCoordinateValues();
+        _setUpListners();
 
         $('.generator__box-watermark').draggable({
             drag: function (event, ui) {
@@ -22,9 +20,13 @@ var wPosition = (function () {
 
     // Event Listeners
     function _setUpListners() {
+        // Init coordinates
+        $('#watermark-file').on('change', function () {
+            _initCoordinateValues();
+        });
 
         // Position watermark on click by grid
-        $('.input-group__input').on('change', function () {
+        $('.input-group__input-radio').on('change', function () {
             _changePositionByClick(this);
         });
     }
@@ -32,9 +34,8 @@ var wPosition = (function () {
     function _initCoordinateValues() {
         var positionXInput = $('#coordX'),
             positionYInput = $('#coordY'),
-            watermark = $('.generator__watermark-wrap'),
-            watermarkParent = watermark.closest('.generator__bg-grid-item'),
-            watermarkCoordinates = watermarkParent.offset();
+            watermark = $('.generator__box-watermark'),
+            watermarkCoordinates = watermark.position();
 
         positionXInput.val(watermarkCoordinates.left);
         positionYInput.val(watermarkCoordinates.top);
@@ -49,23 +50,57 @@ var wPosition = (function () {
     }
 
     function _changePositionByClick(element) {
-        var label = $(element),
+        var sourceImage = $('.generator__box-source-image'),
+            sourceImageWidth = sourceImage.width(),
+            sourceImageHeight = sourceImage.height(),
+            coordinates = {
+                'top-left': {
+                    'top': 0,
+                    'left': 0
+                },
+                'top-center': {
+                    'top': 0,
+                    'left': sourceImageWidth / 3
+                },
+                'top-right': {
+                    'top': 0,
+                    'left': sourceImageWidth * 2 / 3
+                },
+                'center-left': {
+                    'top': sourceImageHeight / 3,
+                    'left': 0
+                },
+                'center-center': {
+                    'top': sourceImageHeight / 3,
+                    'left': sourceImageWidth / 3
+                },
+                'center-right': {
+                    'top': sourceImageHeight / 3,
+                    'left': sourceImageWidth * 2 / 3
+                },
+                'bottom-left': {
+                    'top': sourceImageHeight * 2 / 3,
+                    'left': 0
+                },
+                'bottom-center': {
+                    'top': sourceImageHeight * 2 / 3,
+                    'left': sourceImageWidth / 3
+                },
+                'bottom-right': {
+                    'top': sourceImageHeight * 2 / 3,
+                    'left': sourceImageWidth * 2 / 3
+                }
+            },
+            label = $(element),
             currentId = label.attr('id'),
-            grid = $('.generator__bg-grid'),
-            gridPositionItem = grid.find("[data-position='" + currentId + "']"),
-            watermark = $('.generator__watermark-wrap'),
-            watermarkParent = watermark.closest('.generator__bg-grid-item'),
-            watermarkCoordinates = watermarkParent.offset();
+            watermark = $('.generator__box-watermark');
 
-        console.log(watermarkCoordinates);
+        watermark.animate({
+         'top': coordinates[currentId].top + 'px',
+         'left': coordinates[currentId].left + 'px'
+         }, 200);
 
-        watermark
-            .attr('style', '')
-            .stop(true, true)
-            .fadeOut(200)
-            .appendTo(gridPositionItem)
-            .stop(true, true)
-            .fadeIn(200);
+        _setCoordinateValues(coordinates[currentId].left, coordinates[currentId].top);
     }
 
     // Public Methods
