@@ -7,13 +7,21 @@ var uploadImages = (function () {
         var sourceInputSelector = '#source-file',
             sourceInputFake = '.input-group__fake-input.source',
             watermarkInputSelector = '#watermark-file',
-            watermarkInputFake = '.input-group__fake-input.watermark';
+            watermarkInputFake = '.input-group__fake-input.watermark',
+            watermarkPositionInputs = '.input-group__input-radio',
+            watermarkCoordInputs = '.coords-settings__input',
+            watermarkOpacityInputs = '#opacityInput',
+            submitButtonElement = '.settings-block__button_submit',
+            watermarkControlInputs = [watermarkPositionInputs, watermarkCoordInputs, watermarkOpacityInputs, submitButtonElement];
 
-        fileUpload(sourceInputSelector, sourceInputFake, true);
-        fileUpload(watermarkInputSelector, watermarkInputFake, false);
+        // File upload function on source image input
+        fileUpload(sourceInputSelector, sourceInputFake, true, [watermarkInputSelector]);
+
+        // File upload function on watermark input
+        fileUpload(watermarkInputSelector, watermarkInputFake, false, watermarkControlInputs);
     };
 
-    function fileUpload(selector, fakeSelector, isSource) {
+    function fileUpload(selector, fakeSelector, isSource, inputsForEnable) {
         var serverPath = 'server/',
             options = {
                 url: serverPath + 'upload.php',
@@ -29,10 +37,13 @@ var uploadImages = (function () {
                         // add filename to fake input
                         addFileName(fakeSelector, data.originalFiles[0].name);
 
-                        // show source image in box or show watermark
+                        // show source and watermark image in box
                         isSource ?
                             showSourceImage(serverPath + data.result.filelink) :
                             showMarkImage(serverPath + data.result.filelink);
+
+                        // enable other inputs
+                        if (inputsForEnable) enableInputs(inputsForEnable);
                     } else {
                         // Generate error after fake input
                         var parent = $(fakeSelector).closest('.input-group');
@@ -157,6 +168,13 @@ var uploadImages = (function () {
                     "height": imgHeight
                 });
         };
+    }
+
+    function enableInputs(selectors) {
+        $.each(selectors, function (index, value) {
+            $(value).prop('disabled', false);
+            console.log('value: ' + value + ' prop: ' + $(value).prop('disabled'));
+        });
     }
 
     return {

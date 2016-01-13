@@ -35,19 +35,19 @@ main.container
 				.settings-block__position
 					each position in positions
 						label.position-label
-							input.input-group__input(type="radio" id="#{position}" value="#{position}" name="position")
+							input.input-group__input.input-group__input-radio(type="radio" id="#{position}" value="#{position}" name="position" disabled="disabled")
 							.position-label__fake-radio
 
 				.settings-block__coords
 					label.coords-settings
 						p.coords-settings__title X
-						input.coords-settings__input(type="text" id="coordX")
+						input.coords-settings__input(type="text" id="coordX" disabled="disabled")
 						.coords-settings__top
 						.coords-settings__bottom
 
 					label.coords-settings
 						p.coords-settings__title Y
-						input.coords-settings__input(type="text" id="coordY")
+						input.coords-settings__input(type="text" id="coordY" disabled="disabled")
 						.coords-settings__top
 						.coords-settings__bottom
 				.clearfix
@@ -65,7 +65,7 @@ main.container
 		// Начало блока кнопок
 		.settings-block
 				button.settings-block__button.settings-block__button_reset(type="reset" id="resetForm") Сброс
-				button.settings-block__button.settings-block__button_submit(type="submit" id="download") Скачать
+				button.settings-block__button.settings-block__button_submit(type="submit" id="download" disabled="disabled") Скачать
 		// Конец блока кнопок
 
 
