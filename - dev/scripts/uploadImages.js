@@ -20,10 +20,29 @@ var uploadImages = (function () {
                 type: 'POST',
                 dataType: 'json',
                 done: function (e, data) {
-                    addFileName(fakeSelector, data.originalFiles[0].name);
-                    isSource ?
-                        showSourceImage(serverPath + data.result.filelink) :
-                        showMarkImage(serverPath + data.result.filelink);
+                    if (data.result.status === 'success') {
+
+                        // remove error div
+                        var errors = $('.' + selector.substr(1) + '-error');
+                        errors ? errors.remove() : '';
+
+                        // add filename to fake input
+                        addFileName(fakeSelector, data.originalFiles[0].name);
+
+                        // show source image in box or show watermark
+                        isSource ?
+                            showSourceImage(serverPath + data.result.filelink) :
+                            showMarkImage(serverPath + data.result.filelink);
+                    } else {
+                        // Generate error after fake input
+                        var parent = $(fakeSelector).closest('.input-group');
+
+                        $('<div>', {
+                            id: selector + '-error',
+                            text: data.result.message,
+                            class: selector.substr(1) + '-error'
+                        }).appendTo(parent);
+                    }
                 },
                 fail: function (e, data) {
                     console.log('error');

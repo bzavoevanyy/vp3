@@ -22,34 +22,36 @@ main.container
 			.settings-block__title Водяной знак
 			label.input-group
 				.input-group__fake-input.watermark
-				input.input-group__input(id="watermark-file" type="file" name="watermark-file")
+				input.input-group__input(id="watermark-file" type="file" name="watermark-file" disabled="disabled")
 		// Конец блока загрузки изображений
 
 
-		// Начало блока выбора положения водяного знака
-		.settings-block
-			.settings-block__title.settings-block__title_margin Положение
+		// Изначально блок неактивный, для добавления активности блоку нужно добавить еще один класс: .inactive_off
+		.inactive
+			// Начало блока выбора положения водяного знака
+			.settings-block
+				.settings-block__title.settings-block__title_margin Положение
 
-			.settings-block__position
-				each position in positions
-					label.position-label
-						input.input-group__input(type="radio" id="#{position}" value="#{position}" name="position")
-						.position-label__fake-radio
+				.settings-block__position
+					each position in positions
+						label.position-label
+							input.input-group__input(type="radio" id="#{position}" value="#{position}" name="position")
+							.position-label__fake-radio
 
-			.settings-block__coords
-				label.coords-settings
-					p.coords-settings__title X
-					input.coords-settings__input(type="text" id="coordX")
-					.coords-settings__top
-					.coords-settings__bottom
+				.settings-block__coords
+					label.coords-settings
+						p.coords-settings__title X
+						input.coords-settings__input(type="text" id="coordX")
+						.coords-settings__top
+						.coords-settings__bottom
 
-				label.coords-settings
-					p.coords-settings__title Y
-					input.coords-settings__input(type="text" id="coordY")
-					.coords-settings__top
-					.coords-settings__bottom
-			.clearfix
-		// Конец блока выбора положения водяного знака
+					label.coords-settings
+						p.coords-settings__title Y
+						input.coords-settings__input(type="text" id="coordY")
+						.coords-settings__top
+						.coords-settings__bottom
+				.clearfix
+			// Конец блока выбора положения водяного знака
 
 
 		// Начало блока слайдера прозрачности
