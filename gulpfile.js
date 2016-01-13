@@ -9,12 +9,17 @@ var
     rename = require("gulp-rename"),
     plumber = require('gulp-plumber'),
     concat = require('gulp-concat'),
-    order = require('gulp-order');
+    order = require('gulp-order'),
+    del = require('del'),
+    runSequence = require('run-sequence');
+
 
 /* --------- paths --------- */
 
 var
     paths = {
+        clearPath: ['dist', '- dev/scripts/_plugins/'],
+
         jade: {
             location: '- dev/markups/**/*.jade',
             compiled: '- dev/markups/_pages/*.jade',
@@ -78,6 +83,11 @@ var
             ]
         }
     };
+
+/* --------- Clean generated files --------- */
+gulp.task('clean', function (callback) {
+    return del(paths.clearPath, callback);
+});
 
 /* --------- jade --------- */
 
@@ -212,10 +222,14 @@ gulp.task('watch', function () {
 });
 
 /* --------- build --------- */
-gulp.task('build', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts', 'server']);
+gulp.task('build', function (callback) {
+    runSequence('clean', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts', 'server'], callback);
+});
 
 /* --------- default --------- */
-gulp.task('default', ['build', 'sync', 'watch']);
+gulp.task('default', function (callback) {
+    runSequence('build', ['sync', 'watch'], callback);
+});
 
 
 /* ------ Pretty error view ------ */
