@@ -52,16 +52,16 @@ var wPosition = (function () {
             watermark = $('.generator__box-watermark'),
             watermarkCoordinates = watermark.position();
 
-        positionXInput.val(watermarkCoordinates.left);
-        positionYInput.val(watermarkCoordinates.top);
+        positionXInput.val(Math.round(watermarkCoordinates.left));
+        positionYInput.val(Math.round(watermarkCoordinates.top));
     }
 
     function _setCoordinateValues(x, y) {
         var positionXInput = $('#coordX'),
             positionYInput = $('#coordY');
 
-        positionXInput.val(x);
-        positionYInput.val(y);
+        positionXInput.val(Math.round(x));
+        positionYInput.val(Math.round(y));
     }
 
     function _changePositionByClick(element) {
