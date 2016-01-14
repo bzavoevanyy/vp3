@@ -5,10 +5,15 @@ var wPosition = (function () {
     function init() {
         console.log('[ wPosition works ... ]');
 
+        var rangeOpacitySlider = $('.settings-block__slider'),
+            rangeOpacityInput = $('#opacityInput'),
+            watermark = $('.generator__box-watermark');
+
         // Set Up Listeners
         _setUpListners();
 
-        $('.generator__box-watermark').draggable({
+        // Move watermark by mouse
+        watermark.draggable({
             drag: function (event, ui) {
                 _setCoordinateValues(ui.position.left, ui.position.top);
             },
@@ -16,6 +21,16 @@ var wPosition = (function () {
             scroll: false
         });
 
+        // Change opacity with range slider
+        rangeOpacitySlider.slider({
+            min: 0,
+            max: 100,
+            value: 100,
+            slide: function (event, ui) {
+                rangeOpacityInput.val(ui.value);
+                watermark.css('opacity', ui.value / 100);
+            }
+        });
     }
 
     // Event Listeners
@@ -96,9 +111,9 @@ var wPosition = (function () {
             watermark = $('.generator__box-watermark');
 
         watermark.animate({
-         'top': coordinates[currentId].top + 'px',
-         'left': coordinates[currentId].left + 'px'
-         }, 200);
+            'top': coordinates[currentId].top + 'px',
+            'left': coordinates[currentId].left + 'px'
+        }, 200);
 
         _setCoordinateValues(coordinates[currentId].left, coordinates[currentId].top);
     }

@@ -45,6 +45,8 @@ body{
 	position: relative;
 	padding-bottom: 8px;
 	clear: both;
+	min-height: 100px;  // Ad Hoc. fix please remove it
+
 	&:after{
 		content: ' ';
 		width: 10px;
