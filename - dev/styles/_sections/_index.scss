@@ -7,6 +7,7 @@ body{
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
+	min-width: 980px;
 }
 
 
@@ -20,6 +21,7 @@ body{
 	margin: auto;
 	width: 960px;
 	height: 670px;
+	margin-bottom: 20px;	
 }
 
 .clearfix:before,
@@ -45,7 +47,6 @@ body{
 	position: relative;
 	padding-bottom: 8px;
 	clear: both;
-	min-height: 100px;  // Ad Hoc. fix please remove it
 
 	&:after{
 		content: ' ';
@@ -59,13 +60,7 @@ body{
 		bottom: -6px;
 		background: #f1f1f5;
 	}
-	&:last-child{
-		border-bottom: none;
-		&:after{
-			border-left: none;
-			border-bottom: none;
-		}
-	}
+
 }
 
 .settings-block__title{
@@ -77,6 +72,5 @@ body{
 	line-height: 14px;
 	color: #2e3641;
 	padding: 8px 20px;
-	margin-top: 7px;
 }
 

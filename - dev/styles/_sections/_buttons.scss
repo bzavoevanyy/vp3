@@ -1,6 +1,6 @@
 
 .settings-block__button{
-	box-szing: border-box;
+	box-sizing: border-box;
 	border: none;
   border-radius: 3px;
   width: 97px;
@@ -16,9 +16,7 @@
 	background: #c1cfd9;
 	margin-left: 11px;
 	&:hover{
-		border: 1px solid #616d65;
-		background: -webkit-linear-gradient(top, #616d65 0%,#B1BEC6 100%);
-		opacity: 0.5;
+		background: darken(#c1cfd9, 5%);
 	}
 }
 
@@ -27,6 +25,15 @@
 	margin-left: 40px;
 	&:hover{
 		border: 1px solid #da6d66;
-		background: -webkit-radial-gradient(center, ellipse cover, #e3736c 0%,#da6d66 100%);
+		background: darken($maincolor, 5%);
+		cursor: pointer;
+	}
+}
+
+.settings-block_button:last-child{
+	border: none;
+	&:after{
+		content: none;
+
 	}
 }
