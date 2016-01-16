@@ -26,6 +26,7 @@ var _var = (function () {
             rangeElement: '.settings-block__slider'
         },
         buttons: {
+            form: '#form-upload',
             submit: '.settings-block__button_submit'
         },
         coordinates: {

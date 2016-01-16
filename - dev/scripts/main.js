@@ -12,4 +12,7 @@ $(document).ready(function () {
 
     // Watermark Position Module init
     wPosition.init();
+
+    // Send data to server
+    buttonActions.sendData();
 });
