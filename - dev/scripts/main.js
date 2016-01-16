@@ -1,9 +1,14 @@
 $(document).ready(function () {
-    // jQuery test
-    console.log('[ jQuery works ... ]');
+    var watermarkControlInputs = [_var.position.inputs, _var.coordinates.inputs, _var.opacity.Input, _var.buttons.submit];
 
-    // Uploud images
-    uploadImages.init();
+    // File upload function on source image input
+    uploadImage.fileUpload(_var.sourceImage.input, _var.sourceImage.fakeInput, true, [_var.watermark.input]);
+
+    // File upload function on watermark input
+    uploadImage.fileUpload(_var.watermark.input, _var.watermark.fakeInput, false, watermarkControlInputs);
+
+    // Init opacity range
+    opacityRange.init();
 
     // Watermark Position Module init
     wPosition.init();

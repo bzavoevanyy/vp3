@@ -5,9 +5,7 @@ var wPosition = (function () {
     function init() {
         console.log('[ wPosition works ... ]');
 
-        var rangeOpacitySlider = $('.settings-block__slider'),
-            rangeOpacityInput = $('#opacityInput'),
-            watermark = $('.generator__box-watermark');
+        var watermark = $('.generator__box-watermark');
 
         // Set Up Listeners
         _setUpListners();
@@ -20,40 +18,31 @@ var wPosition = (function () {
             containment: '.generator__box-source',
             scroll: false
         });
-
-        // Change opacity with range slider
-        rangeOpacitySlider.slider({
-            min: 0,
-            max: 100,
-            value: 100,
-            slide: function (event, ui) {
-                rangeOpacityInput.val(ui.value);
-                watermark.css('opacity', ui.value / 100);
-            }
-        });
     }
 
     // Event Listeners
     function _setUpListners() {
         // Init coordinates
         $('#watermark-file').on('change', function () {
-            _initCoordinateValues();
+            showCoordinates();
         });
 
         // Position watermark on click by grid
         $('.input-group__input-radio').on('change', function () {
             _changePositionByClick(this);
         });
+
+        // Arrow up and down clicks
+        $('.coords-settings__top').on('click', function () {
+        });
     }
 
-    function _initCoordinateValues() {
-        var positionXInput = $('#coordX'),
-            positionYInput = $('#coordY'),
-            watermark = $('.generator__box-watermark'),
-            watermarkCoordinates = watermark.position();
+    // Show current coordinates of watermark in inputs
+    function showCoordinates (){
+        var watermarkCoordinates = $(_var.watermark.wrap).position();
 
-        positionXInput.val(Math.round(watermarkCoordinates.left));
-        positionYInput.val(Math.round(watermarkCoordinates.top));
+        $(_var.coordinates.left).val(Math.round(watermarkCoordinates.left));
+        $(_var.coordinates.top).val(Math.round(watermarkCoordinates.top));
     }
 
     function _setCoordinateValues(x, y) {
@@ -120,6 +109,7 @@ var wPosition = (function () {
 
     // Public Methods
     return {
-        init: init
+        init: init,
+        showCoordinates: showCoordinates
     };
 })();
