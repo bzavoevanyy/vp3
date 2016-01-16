@@ -122,8 +122,6 @@ var uploadImage = (function () {
             imgWidth = imgWidth / sourceImageK;
             imgHeight = imgHeight / sourceImageK;
 
-            console.log('maxWidth:' + maxWidth + ' maxHeight: ' + maxHeight);
-
             if (imgWidth >= imgHeight) {
                 if (imgWidth >= maxWidth) {
                     k = imgWidth / maxWidth;
