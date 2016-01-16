@@ -4,7 +4,7 @@ main.container
 	.generator
 		h1.generator__title Генератор водяных знаков
 		//Для добавления паттерна после загрузки изображения нужно блоку .generator__box добавить класс .generator__box_filled
-		.generator__box.generator__box_filled
+		.generator__box
 			.generator__box-source
 				img(src='' alt='').generator__box-source-image
 				.generator__box-watermark
@@ -27,7 +27,7 @@ main.container
 		// Конец блока загрузки изображений
 
 
-		// Изначально блок неактивный, для добавления активности блоку нужно добавить еще один класс: .inactive_off
+		
 		.inactive
 			// Начало блока выбора положения водяного знака
 			.settings-block
