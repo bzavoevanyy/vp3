@@ -12,4 +12,5 @@ $(document).ready(function () {
 
     // Watermark Position Module init
     wPosition.init();
+    reset.init();
 });
