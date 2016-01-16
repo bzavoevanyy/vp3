@@ -28,4 +28,8 @@
       background-color: darken($maincolor, 5%);
     }
   }
+
+  &:focus{
+    outline-color: #d5756f;
+  }
 }

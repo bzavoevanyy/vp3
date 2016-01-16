@@ -78,6 +78,9 @@
 	color: #444a53;
 	font-weight: normal;
 	background: #f1f1f5;
+	&:focus{
+    outline-color: #d5756f;
+  }
 }
 
 .coords-settings{

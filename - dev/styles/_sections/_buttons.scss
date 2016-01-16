@@ -10,6 +10,9 @@
   font-size: 18px;
   color: #fff;
   margin-top: 56px;
+  &:focus{
+    outline-color: #d5756f;
+  }
 }
 
 .settings-block__button_reset{

@@ -40,6 +40,9 @@ body{
 .input-group__input{
 	position: absolute;
 	opacity: 0;
+	&:focus{
+    outline-color: #d5756f;
+  }
 }
 
 

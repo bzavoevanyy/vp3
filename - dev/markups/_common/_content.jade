@@ -38,11 +38,11 @@ main.container
 						label.position-label
 							input.input-group__input.input-group__input-radio(type="radio" id="#{position}" value="#{position}" name="position" disabled="disabled")
 							.position-label__fake-radio
-
+				//- disabled="disabled" readonly="readonly"
 				.settings-block__coords
 					label.coords-settings
 						p.coords-settings__title X
-						input.coords-settings__input(type="text" id="coordX" disabled="disabled" readonly="readonly")
+						input.coords-settings__input(type="text" id="coordX" )
 						div(data-axis="x" data-vector="top").coords-settings__arrow.coords-settings__top
 						div(data-axis="x" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
 
