@@ -3,7 +3,7 @@ var _var = (function () {
         sourceImage: {
             input: '#source-file',
             fakeInput: '.input-group__fake-input.source',
-            wrap: ''
+            wrap: '.generator__box-source'
         },
         watermark : {
             input: '#watermark-file',
@@ -20,7 +20,8 @@ var _var = (function () {
         coordinates: {
             inputs: '.coords-settings__input',
             left: '#coordX',
-            top: '#coordY'
+            top: '#coordY',
+            arrows: '.coords-settings__arrow'
         },
         position: {
             inputs: '.input-group__input-radio'
