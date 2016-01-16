@@ -21,6 +21,12 @@
 		background: $maincolor;
 		border: 1px solid $maincolor;
 	}
+	&[disabled="disabled"]{
+		background: #ccc;
+    border: 1px solid #adadad;
+    opacity: 0.4;
+    cursor: default;
+	}
 }
 
 .position-label:nth-child(3) .position-label__fake-radio{
@@ -45,10 +51,6 @@
 	background: $maincolor;
 }
 
-.settings-block__title_margin{
-	margin-bottom: 25px;
-}
-
 .settings-block__coords{
 	float: right;
 	margin-bottom: 20px;
@@ -63,7 +65,9 @@
 	margin-right: 4px;
 	position: relative;
 	top: -3px;
-	
+	&[disabled="disabled"]{
+		color: #ccc;
+	}
 }
 
 .coords-settings__input{
@@ -78,9 +82,18 @@
 	color: #444a53;
 	font-weight: normal;
 	background: #f1f1f5;
+
 	&:focus{
     outline-color: #d5756f;
   }
+
+  &[disabled="disabled"]{
+		background: #ccc;
+    border: 1px solid #adadad;
+    opacity: 0.4;
+    cursor: default;
+	}
+
 }
 
 .coords-settings{
@@ -104,6 +117,10 @@
 		cursor: pointer;
 		opacity: 1;
 	}
+	&[disabled="disabled"]{
+		opacity: 0.3;
+		cursor: default;
+	}
 }
 
 .coords-settings__bottom{
@@ -119,5 +136,9 @@
 	&:hover{
 		cursor: pointer;
 		opacity: 1;
+	}
+	&[disabled="disabled"]{
+		opacity: 0.3;
+		cursor: default;
 	}
 }

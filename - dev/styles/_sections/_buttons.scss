@@ -26,10 +26,18 @@
 .settings-block__button_submit{
 	background: $maincolor;
 	margin-left: 40px;
+
 	&:hover{
 		border: 1px solid #da6d66;
 		background: darken($maincolor, 5%);
 		cursor: pointer;
+	}
+
+	&[disabled="disabled"]{
+		background: #ccc;
+    border: 1px solid #adadad;
+    opacity: 0.6;
+    cursor: default;
 	}
 }
 

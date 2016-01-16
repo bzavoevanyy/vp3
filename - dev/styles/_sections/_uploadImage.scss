@@ -32,4 +32,21 @@
   &:focus{
     outline-color: #d5756f;
   }
+
+  &[disabled="disabled"]{
+    background: #ccc;
+    border: 1px solid #adadad;
+    opacity: 0.4;
+    cursor: default;
+
+    &:after{
+      cursor: default;
+    }
+
+    &:hover{
+      &:after{
+        background-color: $maincolor;
+      }
+    }
+  }
 }

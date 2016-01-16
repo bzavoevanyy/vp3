@@ -76,5 +76,8 @@ body{
 	line-height: 14px;
 	color: #2e3641;
 	padding: 8px 20px;
+	&[disabled="disabled"]{
+      color: #adadad;
+    }
 }
 
