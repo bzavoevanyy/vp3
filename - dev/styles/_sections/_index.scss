@@ -38,7 +38,8 @@ body{
 
 .settings-block__input,
 .input-group__input{
-	display: none;
+	position: absolute;
+	opacity: 0;
 }
 
 
