@@ -28,9 +28,10 @@ var wPosition = (function () {
         // Position watermark on click by grid
         $(_var.position.inputs).on('change', function () {
             var $this = $(this),
-                sourceImage = $(_var.sourceImage.wrap),
-                sourceImageWidth = sourceImage.width(),
-                sourceImageHeight = sourceImage.height(),
+                sourceImageWidth = _var.sourceImage.currentWidth,
+                sourceImageHeight = _var.sourceImage.currentHeight,
+                watermarkWidth = _var.watermark.currentWidth,
+                watermarkHeight = _var.watermark.currentHeight,
                 coordinates = {
                     'top-left': {
                         'top': 0,
@@ -38,35 +39,35 @@ var wPosition = (function () {
                     },
                     'top-center': {
                         'top': 0,
-                        'left': sourceImageWidth / 3
+                        'left': sourceImageWidth / 2 - watermarkWidth / 2
                     },
                     'top-right': {
                         'top': 0,
-                        'left': sourceImageWidth * 2 / 3
+                        'left': sourceImageWidth - watermarkWidth
                     },
                     'center-left': {
-                        'top': sourceImageHeight / 3,
+                        'top': sourceImageHeight / 2 - watermarkHeight / 2,
                         'left': 0
                     },
                     'center-center': {
-                        'top': sourceImageHeight / 3,
-                        'left': sourceImageWidth / 3
+                        'top': sourceImageHeight / 2 - watermarkHeight / 2,
+                        'left': sourceImageWidth / 2 - watermarkWidth / 2
                     },
                     'center-right': {
-                        'top': sourceImageHeight / 3,
-                        'left': sourceImageWidth * 2 / 3
+                        'top': sourceImageHeight / 2 - watermarkHeight / 2,
+                        'left': sourceImageWidth - watermarkWidth
                     },
                     'bottom-left': {
-                        'top': sourceImageHeight * 2 / 3,
+                        'top': sourceImageHeight - watermarkHeight,
                         'left': 0
                     },
                     'bottom-center': {
-                        'top': sourceImageHeight * 2 / 3,
-                        'left': sourceImageWidth / 3
+                        'top': sourceImageHeight - watermarkHeight,
+                        'left': sourceImageWidth / 2 - watermarkWidth / 2
                     },
                     'bottom-right': {
-                        'top': sourceImageHeight * 2 / 3,
-                        'left': sourceImageWidth * 2 / 3
+                        'top': sourceImageHeight - watermarkHeight,
+                        'left': sourceImageWidth - watermarkWidth
                     }
                 },
                 currentId = $this.attr('id');
@@ -84,16 +85,34 @@ var wPosition = (function () {
                 newY = coordinates.top;
 
             axis === 'x' ?
-                newX = calcCoordinateByArrow(vector, coordinates.left) :
-                newY = calcCoordinateByArrow(vector, coordinates.top);
+                newX = calcCoordinateByArrow(axis, vector, coordinates.left, _var.watermark.currentWidth) :
+                newY = calcCoordinateByArrow(axis, vector, coordinates.top, _var.watermark.currentHeight);
 
             moveWatermark(newX, newY);
         });
     }
 
     // Calculate coordinate plus or minus after click by arrow
-    function calcCoordinateByArrow(vector, coordinate){
-        return vector === 'top' ? coordinate + 1 : coordinate - 1;
+    function calcCoordinateByArrow(axis, vector, coordinate, size) {
+        var axisMax,
+            axisMin = 0;
+
+        axis === 'x' ?
+            axisMax = _var.sourceImage.currentWidth :
+            axisMax = _var.sourceImage.currentHeight;
+
+        return vector === 'top' ? checkLimit('max', coordinate + 1, axisMax, size) : checkLimit('min', coordinate - 1, axisMin);
+    }
+
+    // Limit function
+    function checkLimit(type, value, limit, size) {
+        var result;
+
+        type === 'max' ?
+            result = (( (value + size) <= limit) ? value : (limit - size)) :
+            result = (value >= limit) ? value : limit;
+
+        return result;
     }
 
     // Move watermark to x , y
