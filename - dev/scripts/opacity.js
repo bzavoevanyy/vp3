@@ -1,7 +1,7 @@
 var opacityRange = (function () {
-    var init = function () {
 
-        // Change opacity with range slider
+    // Change opacity with range slider
+    function init() {
         $(_var.opacity.rangeElement).slider({
             min: 0,
             max: 100,
@@ -11,7 +11,7 @@ var opacityRange = (function () {
                 $(_var.watermark.wrap).css('opacity', ui.value / 100);
             }
         });
-    };
+    }
 
     return {
         init: init

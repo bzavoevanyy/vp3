@@ -1,9 +1,12 @@
 var uploadImage = (function () {
 
     // Module init
-    var init = function () {};
+    function init() {
+        console.log('[ uploadImage works ... ]');
+    }
 
-    var fileUpload = function (selector, fakeSelector, isSourceImage, inputsForEnable) {
+    // File upload
+    function fileUpload(selector, fakeSelector, isSourceImage, inputsForEnable) {
         var serverPath = 'server/',
             options = {
                 url: serverPath + 'upload.php',
@@ -13,8 +16,8 @@ var uploadImage = (function () {
                     if (data.result.status === 'success') {
 
                         // remove error div
-                        var errors = $('.' + selector.substr(1) + '-error');
-                        errors ? errors.remove() : '';
+                        var error = $(selector + '-error');
+                        error ? error.remove() : '';
 
                         // add filename to fake input
                         addFileName(fakeSelector, data.originalFiles[0].name);
@@ -31,9 +34,9 @@ var uploadImage = (function () {
                         var parent = $(fakeSelector).closest('.input-group');
 
                         $('<div>', {
-                            id: selector + '-error',
+                            id: selector.substr(1) + '-error',
                             text: data.result.message,
-                            class: selector.substr(1) + '-error'
+                            class: 'file-error'
                         }).appendTo(parent);
                     }
                 },
@@ -45,19 +48,21 @@ var uploadImage = (function () {
         $(selector).fileupload(options);
     }
 
+    // Add filename to fake input
     function addFileName(element, filename) {
         $(element).text(filename);
     }
 
+    // Show source image in the box
     function showSourceImage(link) {
         var imgWidth = 0,
             imgHeight = 0,
-            maxWidth = 651,
-            maxHeight = 534,
-            k = 0,
+            maxWidth = _var.sourceImage.maxWidth,
+            maxHeight = _var.sourceImage.maxHeight,
+            k = 1,
             img = new Image(),
-            sourceImage = $('.generator__box-source-image'),
-            sourceWrapper = $('.generator__box-source');
+            sourceImage = $(_var.sourceImage.image),
+            sourceWrapper = $(_var.sourceImage.wrap);
 
         img.src = link;
         img.onload = function () {
@@ -69,24 +74,20 @@ var uploadImage = (function () {
                     k = imgWidth / maxWidth;
                     imgWidth = maxWidth;
                     imgHeight = imgHeight / k;
-                } else {
-                    k = maxWidth / imgWidth;
-                    imgWidth = maxWidth;
-                    imgHeight = imgHeight * k;
                 }
             } else {
                 if (imgHeight >= maxHeight) {
                     k = imgHeight / maxHeight;
                     imgHeight = maxHeight;
                     imgWidth = imgWidth / k;
-                } else {
-                    k = maxHeight / imgHeight;
-                    imgHeight = maxHeight;
-                    imgWidth = imgWidth * k;
                 }
             }
 
-            //console.log(imgWidth, imgHeight, k);
+            k !== 1 ? _var.sourceImage.k = k : '';
+            _var.sourceImage.currentWidth = imgWidth;
+            _var.sourceImage.currentHeight = imgHeight;
+
+            //console.log('imgWidth: ' + imgWidth + ' imgHeight: ' + imgHeight + ' k:' + _var.sourceImage.k);
 
             sourceWrapper.css({
                 "width": imgWidth,
@@ -102,16 +103,17 @@ var uploadImage = (function () {
         };
     }
 
+    // Show watermark in the box
     function showMarkImage(link) {
         var imgWidth = 0,
             imgHeight = 0,
-            k = 0,
+            k = 1,
             img = new Image(),
-            sourceImage = $('.generator__box-source'),
-            maxWidth = sourceImage.width() / 3,
-            maxHeight = sourceImage.height() / 3,
-            watermarkImage = $('.generator__box-watermark-image'),
-            watermarkWrapper = $('.generator__box-watermark');
+            maxWidth = _var.sourceImage.currentWidth,
+            maxHeight = _var.sourceImage.currentHeight,
+            sourceImageK = _var.sourceImage.k,
+            watermarkImage = $(_var.watermark.image),
+            watermarkWrapper = $(_var.watermark.wrap);
 
         img.src = link;
 
@@ -119,29 +121,28 @@ var uploadImage = (function () {
             imgWidth = this.width;
             imgHeight = this.height;
 
+            imgWidth = imgWidth / sourceImageK;
+            imgHeight = imgHeight / sourceImageK;
+
             if (imgWidth >= imgHeight) {
                 if (imgWidth >= maxWidth) {
                     k = imgWidth / maxWidth;
                     imgWidth = maxWidth;
                     imgHeight = imgHeight / k;
-                } else {
-                    k = maxWidth / imgWidth;
-                    imgWidth = maxWidth;
-                    imgHeight = imgHeight * k;
                 }
             } else {
                 if (imgHeight >= maxHeight) {
                     k = imgHeight / maxHeight;
                     imgHeight = maxHeight;
                     imgWidth = imgWidth / k;
-                } else {
-                    k = maxHeight / imgHeight;
-                    imgHeight = maxHeight;
-                    imgWidth = imgWidth * k;
                 }
             }
 
-            //console.log(imgWidth, imgHeight, k);
+            k !== 1 ? _var.watermark.k = k : '';
+            _var.watermark.currentWidth = imgWidth;
+            _var.watermark.currentHeight = imgHeight;
+
+            //console.log('imgWidth: ' + imgWidth + ' imgHeight: ' + imgHeight + ' k:' + _var.watermark.k);
 
             watermarkWrapper.css({
                 "width": imgWidth,
@@ -157,6 +158,7 @@ var uploadImage = (function () {
         };
     }
 
+    // Public methods
     return {
         init: init,
         fileUpload: fileUpload
