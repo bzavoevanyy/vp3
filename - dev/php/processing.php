@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../vendor/autoload.php";
+require_once "../vendor/autoload.php";
 use \WideImage\WideImage as WideImage;
 
 $sourceImage = $_POST['sourceImage'];
@@ -11,11 +11,11 @@ $positionX = $_POST['x']*$sourceK;
 $positionY = $_POST['y']*$sourceK;
 $opacity = $_POST['opacity'];
 
-$image = WideImage::LoadFromFile("uploads/$sourceImage");
-$image_watermark = WideImage::LoadFromFile("uploads/$watermark");
+$image = WideImage::LoadFromFile($sourceImage);
+$image_watermark = WideImage::LoadFromFile($watermark);
 
 if ($watermarkK > 1) {
-    $imgInfo = getimagesize("uploads/$watermark");
+    $imgInfo = getimagesize("$watermark");
     $newWidth = $imgInfo[0]/$watermarkK;
     $newHeight = $imgInfo[1]/$watermarkK;
     $image_watermark_resized = $image_watermark->resize($newWidth, $newHeight);
@@ -26,7 +26,7 @@ if ($watermarkK > 1) {
 $image_merged = $image->merge($image_watermark, $positionX, $positionY, $opacity);
 $image_merged->saveToFile('uploads/result.jpg');
 
-$data = $_SERVER['HTTP_HOST'].'/server/uploads/result.jpg';
+$data = '/server/uploads/result.jpg';
 
 echo json_encode($data);
 exit;

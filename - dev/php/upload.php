@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $data['status'] = 'success';
         $data['message'] = 'Файл успешно загружен '.$file['type'];
-        $data['filename'] = $filename_new;
+        $data['filename'] = 'uploads/'.$filename_new;
     } else {
         $data['status'] = 'error';
         $data['message'] = 'Ошибка загрузки файла на сервер.';

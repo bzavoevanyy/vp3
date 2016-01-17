@@ -72,7 +72,7 @@ main.container
                     .coords-settings__title_arrow
                     input(type="text" id="coordY" disabled="disabled" readonly="readonly").coords-settings__input
                     div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__top
-                    div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__bottom
+                    div(data-axis="y" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
             .clearfix
         // Конец блока выбора положения водяного знака
         // Начало блока слайдера прозрачности
@@ -85,4 +85,5 @@ main.container
         #settings-block-buttons.settings-block.settings-block_button.settings-block_disabled
             button(type="reset" id="resetForm" disabled="disabled").settings-block__button.settings-block__button_reset Сброс
             button(type="submit" id="download" disabled="disabled").settings-block__button.settings-block__button_submit Скачать
+            a(download='result.jpg').fake-link
         // Конец блока кнопок

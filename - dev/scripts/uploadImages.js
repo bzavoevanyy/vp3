@@ -19,14 +19,18 @@ var uploadImage = (function () {
                         var error = $(selector + '-error');
                         error ? error.remove() : '';
 
+
                         // add filename to fake input
                         addFileName(fakeSelector, data.originalFiles[0].name);
 
                         // show source and watermark image in box
-                        isSourceImage ?
-                            showSourceImage(serverPath + data.result.filelink) :
-                            showMarkImage(serverPath + data.result.filelink);
-
+                        if (isSourceImage) {
+                            showSourceImage(serverPath + data.result.filename);
+                            _var.sourceImage.filename = data.result.filename;
+                        } else {
+                            showMarkImage(serverPath + data.result.filename);
+                            _var.watermark.filename = data.result.filename;
+                        };
                         // enable other inputs
                         if (inputsForEnable) enable.enableInputs(inputsForEnable);
                     } else {

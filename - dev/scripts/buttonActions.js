@@ -9,8 +9,8 @@ var buttonActions = (function () {
 
             var defObject,
                 data = {
-                    sourceImage: $(_var.sourceImage.fakeInput).text(),
-                    watermark: $(_var.watermark.fakeInput).text(),
+                    sourceImage: _var.sourceImage.filename,
+                    watermark: _var.watermark.filename,
                     sourceK: _var.sourceImage.k,
                     watermarkK: _var.watermark.k,
                     opacity: $(_var.opacity.input).val() || 100,
@@ -32,7 +32,9 @@ var buttonActions = (function () {
                     console.log('server error');
                 })
                 .done(function (answer) {
-                    console.log(answer);
+
+                    $('.fake-link').attr("href",answer)[0].click();
+
                 });
 
             return defObject;

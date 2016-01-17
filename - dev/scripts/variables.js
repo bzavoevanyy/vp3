@@ -11,7 +11,8 @@ var _var = (function () {
             maxHeight: 534,
             currentWidth: 0,
             currentHeight: 0,
-            k: 1
+            k: 1,
+            filename : ''
         },
         watermark: {
             section: '#settings-block-watermark',
@@ -21,7 +22,8 @@ var _var = (function () {
             image: '.generator__box-watermark-image',
             k: 1,
             currentWidth: 0,
-            currentHeight: 0
+            currentHeight: 0,
+            filename : ''
         },
         opacity: {
             section: '#settings-block-opacity',
