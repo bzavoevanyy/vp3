@@ -27,7 +27,7 @@ main.container
         h2.settings__title Настройки
         // Начало блока загрузки изображений
         #settings-block-sourceImage.settings-block
-            .settings-block__title Исходное изображение
+            .settings-block__title.settings-block__title-source Исходное изображение
 
             label.input-group
                 .input-group__fake-input
@@ -35,7 +35,8 @@ main.container
                 input(id="source-file" type="file" name="source-file").input-group__input
 
         #settings-block-watermark.settings-block.settings-block_disabled
-            .settings-block__title Водяной знак
+            .settings-block__title.settings-block__title-watermark Водяной знак
+
             label.input-group
                 div.input-group__fake-input
                     .input-group__fileName-box.watermark
@@ -76,7 +77,7 @@ main.container
         // Конец блока выбора положения водяного знака
         // Начало блока слайдера прозрачности
         #settings-block-opacity.settings-block.settings-block_disabled
-            .settings-block__title Прозрачность
+            .settings-block__title.settings-block__title-transparency Прозрачность
             input(type="text" id="opacityInput" disabled="disabled").settings-block__input
             .settings-block__slider
         // Конец блока слайдера прозрачности

@@ -1,0 +1,12 @@
+{
+  "languages" : {
+      "title" : ["Watermarks generator", "Генератор водяных знаков"],
+      "settings" : ["Settings", "Настройки"],
+      "sourceInput" : ["Original image", "Исходное изображение"],
+      "watermarkInput" : ["Watermark", "Водяной знак"],
+      "place" : ["Place", "Положение"],
+      "transparency" : ["Transparensy", "Прозрачность"],
+      "reset" : ["Reset", "Сбросить"],
+      "Download" : ["Download", "Скачать"]
+    }
+  }
