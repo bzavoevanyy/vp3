@@ -1,17 +1,26 @@
 .settings-block{
 	&__position{
 		margin-left: 20px;
-		width: 115px;
-		border-radius: 4px;
-		overflow: hidden;
-		display: flex;
-		flex-wrap: wrap;
-		float: left;
+    padding-top: 1px;
+    width: 102px;
+    height: 101px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
 	}
 
 	&__coords{
 		float: right;
-		margin-bottom: 10px;
+		margin-bottom: 14px;
+	}
+
+	&__title{
+		&_margin{
+      margin-bottom: 28px;
+      padding-top: 6px;
+    }
 	}
 }
 
@@ -19,12 +28,13 @@
 
 .position-label__fake-radio{
 	width: 33px;
-	height: 32px;
+	height: 32.5px;
 	background: #dbe1e8;
 	border: 1px solid #9eb2c0;
-	margin-right: -1px;
+	margin-right: -2px;
 	padding: 0;
 	cursor: pointer;
+	margin-top: -1px;
 
 	&:hover{
 		background: $maincolor;
