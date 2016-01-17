@@ -1,6 +1,6 @@
 .settings-block{
 	&__position{
-		margin: 0 20px;
+		margin-left: 20px;
 		width: 115px;
 		border-radius: 4px;
 		overflow: hidden;
@@ -11,7 +11,7 @@
 
 	&__coords{
 		float: right;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 }
 
@@ -19,7 +19,7 @@
 
 .position-label__fake-radio{
 	width: 33px;
-	height: 33px;
+	height: 32px;
 	background: #dbe1e8;
 	border: 1px solid #9eb2c0;
 	margin-right: -1px;
@@ -81,8 +81,8 @@
 
 	&__input{
 		box-sizing: border-box;
-		width: 45px;
-		height: 44px;
+		width: 46px;
+		height: 46px;
 		border: 1px solid #9eb2c0;
 		border-radius: 3px;
 		text-align: center;
@@ -91,6 +91,7 @@
 		color: #444a53;
 		font-weight: normal;
 		background: #f1f1f5;
+		margin-right: 3px;
 
 		&:focus{
 	    outline-color: #d5756f;

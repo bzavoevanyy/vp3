@@ -4,13 +4,14 @@
 		box-sizing: border-box;
 		border: none;
 	  border-radius: 3px;
-	  width: 97px;
-	  height: 40px;
+	  width: 99px;
+	  height: 42px;
 	  font-family: "RobotoMedium";
 	  font-weight: normal;
 	  font-size: 18px;
 	  color: #fff;
-	  margin-top: 56px;
+	  margin-top: 46px;
+	  line-height: 38px;
 
 	  &_reset{
 			background: #c1cfd9;
@@ -23,7 +24,7 @@
 
 		&_submit{
 			background: $maincolor;
-			margin-left: 40px;
+			margin-left: 36px;
 
 			&:hover{
 				border: 1px solid #da6d66;

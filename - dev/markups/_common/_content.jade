@@ -19,15 +19,17 @@ main.container
 			label.input-group
 				.input-group__fake-input
 					.input-group__fileName-box.source
+				div(id="source-file-error").source-file-error Ошибка!
 				input.input-group__input(id="source-file" type="file" name="source-file")
-
+								
 			.settings-block__title(disabled="disabled") Водяной знак
 			label.input-group
 				.input-group__fake-input(disabled="disabled")
 					.input-group__fileName-box.watermark
+				div(id="source-file-error").source-file-error Ошибка!
 				input.input-group__input(id="watermark-file" type="file" name="watermark-file" disabled="disabled")
-		// Конец блока загрузки изображений
 
+		// Конец блока загрузки изображений
 
 		
 		.inactive

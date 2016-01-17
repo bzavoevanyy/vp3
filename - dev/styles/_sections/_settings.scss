@@ -4,7 +4,7 @@
   height: 670px;
   float: right;
   background: #f1f1f5;
-  padding-top: 20px;
+  padding-top: 25px;
   padding-bottom: 25px;
 
   &__title {
@@ -12,8 +12,8 @@
     margin: 0;
     padding: 0;
     font-family: "RobotoLight";
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 26px;
     color: #2e3641;
     font-weight: normal;
     margin-bottom: 30px;
@@ -23,6 +23,7 @@
     border-bottom: 1px solid $litecolor;
     position: relative;
     padding-bottom: 8px;
+    margin-bottom: 10px;
     clear: both;
 
     &:after{
@@ -47,6 +48,10 @@
       line-height: 14px;
       color: #2e3641;
       padding: 8px 20px;
+
+      &_margin{
+        margin-bottom: 31px;
+      }
 
       &[disabled="disabled"]{
         color: #adadad;
