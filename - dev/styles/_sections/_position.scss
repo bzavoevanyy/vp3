@@ -160,3 +160,69 @@
 	}
 }
 
+
+.place-butt{
+	position: absolute;
+	top: 0;
+	right: 10px;
+}
+
+.place-button{
+	display: inline-block;
+	background-image: url('../img/sprite.png');
+	width: 19px;
+	height: 19px;
+	
+	// Стиль кнопки в активном состоянии
+	// &_deployment{
+	// 	background-position: -33px -62px;
+	//	margin-left: 6px;
+	// 	&:hover{
+	// 		cursor: default;
+	// 	}
+	// }
+	// 
+	&_deployment{
+		background-position: -10px -62px;
+		opacity: 0.5;
+		margin-left: 6px;
+		
+		&:hover{
+			opacity: 1;
+			cursor: pointer;
+		}
+	}
+
+	// Стиль кнопки в неактивном состоянии
+	// &_replacement{
+	// 	background-position: -33px -87px;
+	// 	opacity: 0.5;
+
+	// 	&:hover{
+	// 		opacity: 1;
+	// 		cursor: pointer;
+	// 	}
+	// }
+
+	&_replacement{
+		background-position: -10px -87px;
+	}
+}
+
+
+.place-button{
+	&_replace{
+		background-position: -33px -87px;
+		opacity: 0.5;
+
+		&:hover{
+			opacity: 1;
+			cursor: pointer;
+		}
+	}
+
+	&_deploy{
+		background-position: -33px -62px;
+		margin-left: 6px;
+	}
+}

@@ -50,11 +50,15 @@ main.container
 		// Конец блока загрузки изображений
 
 		
-		.inactive
+		.replacement
 			// Начало блока выбора положения водяного знака
 			.settings-block
 				.settings-block__title(disabled="disabled").settings-block__title_margin.russian Положение
 				.settings-block__title(disabled="disabled").settings-block__title_margin.english Place
+
+				.place-butt
+					.place-button.place-button_replacement
+					.place-button.place-button_deployment
 
 				.settings-block__position
 					each position in positions
