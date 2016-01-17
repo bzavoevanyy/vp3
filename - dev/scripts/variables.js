@@ -2,8 +2,9 @@
 var _var = (function () {
     return {
         sourceImage: {
+            section: '#settings-block-sourceImage',
             input: '#source-file',
-            fakeInput: '.input-group__fake-input.source',
+            fakeInput: '.input-group__fileName-box.source',
             wrap: '.generator__box-source',
             image: '.generator__box-source-image',
             maxWidth: 651,
@@ -13,8 +14,9 @@ var _var = (function () {
             k: 1
         },
         watermark: {
+            section: '#settings-block-watermark',
             input: '#watermark-file',
-            fakeInput: '.input-group__fake-input.watermark',
+            fakeInput: '.input-group__fileName-box.watermark',
             wrap: '.generator__box-watermark',
             image: '.generator__box-watermark-image',
             k: 1,
@@ -22,22 +24,22 @@ var _var = (function () {
             currentHeight: 0
         },
         opacity: {
+            section: '#settings-block-opacity',
             input: '#opacityInput',
             rangeElement: '.settings-block__slider'
         },
         buttons: {
+            section: '#settings-block-buttons',
             form: '#form-upload',
             submit: '#download',
             reset: '#resetForm'
         },
         coordinates: {
-            inputs: '.coords-settings__input',
+            section: '#settings-block-position',
+            inputs: '.settings-block__position-item-link',
             left: '#coordX',
             top: '#coordY',
             arrows: '.coords-settings__arrow'
-        },
-        position: {
-            inputs: '.input-group__input-radio'
         }
     };
 })();

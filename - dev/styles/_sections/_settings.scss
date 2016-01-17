@@ -19,27 +19,27 @@
     margin-bottom: 30px;
   }
 
-  &-block{
+  &-block {
     border-bottom: 1px solid $litecolor;
     position: relative;
     padding-bottom: 8px;
     margin-bottom: 10px;
     clear: both;
 
-    &:after{
+    &:after {
       content: ' ';
       width: 10px;
       height: 10px;
-      border-left: 1px solid $litecolor; 
+      border-left: 1px solid $litecolor;
       border-bottom: 1px solid $litecolor;
-      transform: rotate(-45deg); 
+      transform: rotate(-45deg);
       position: absolute;
       left: 47%;
       bottom: -6px;
       background: #f1f1f5;
     }
 
-    &__title{
+    &__title {
       margin: 0;
       padding: 0;
       font-family: "RobotoLight";
@@ -48,13 +48,13 @@
       line-height: 14px;
       color: #2e3641;
       padding: 8px 20px;
-      
-      &[disabled="disabled"]{
+
+      .settings-block_disabled & {
         color: #adadad;
       }
     }
-    
-    &__input{
+
+    &__input {
       position: absolute;
       opacity: 0;
     }

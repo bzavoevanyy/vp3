@@ -13,7 +13,7 @@ var buttonActions = (function () {
                     watermark: $(_var.watermark.fakeInput).text(),
                     sourceK: _var.sourceImage.k,
                     watermarkK: _var.watermark.k,
-                    opacity: $(_var.opacity.input).val(),
+                    opacity: $(_var.opacity.input).val() || 100,
                     x: $(_var.coordinates.left).val(),
                     y: $(_var.coordinates.top).val()
                 };
@@ -45,7 +45,10 @@ var buttonActions = (function () {
         resetButton.on('click', function (e) {
             e.preventDefault();
 
-            $(_var.position.inputs + '#top-left').prop('checked', true);
+            var items = $('.settings-block__position-item');
+
+            items.removeClass('settings-block__position-item_active');
+
             wPosition.moveWatermark(0, 0);
             $(_var.opacity.rangeElement).slider("value", 100);
             $(_var.watermark.wrap).css('opacity', 100);

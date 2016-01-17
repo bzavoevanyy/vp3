@@ -26,8 +26,13 @@ var wPosition = (function () {
         });
 
         // Position watermark on click by grid
-        $(_var.position.inputs).on('change', function () {
+        $(_var.coordinates.inputs).on('click', function (e) {
+            e.preventDefault();
+
             var $this = $(this),
+                currentItem = $this.closest('.settings-block__position-item'),
+                parent = $this.closest('.settings-block__position-list'),
+                items = parent.find('.settings-block__position-item'),
                 sourceImageWidth = _var.sourceImage.currentWidth,
                 sourceImageHeight = _var.sourceImage.currentHeight,
                 watermarkWidth = _var.watermark.currentWidth,
@@ -71,6 +76,9 @@ var wPosition = (function () {
                     }
                 },
                 currentId = $this.attr('id');
+
+            items.removeClass('settings-block__position-item_active');
+            currentItem.addClass('settings-block__position-item_active');
 
             moveWatermark(coordinates[currentId].left, coordinates[currentId].top);
         });

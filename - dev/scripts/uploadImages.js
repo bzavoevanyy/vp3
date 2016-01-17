@@ -87,6 +87,8 @@ var uploadImage = (function () {
             _var.sourceImage.currentWidth = imgWidth;
             _var.sourceImage.currentHeight = imgHeight;
 
+            //console.log('imgWidth: ' + imgWidth + ' imgHeight: ' + imgHeight + ' k:' + _var.sourceImage.k);
+
             sourceWrapper.css({
                 "width": imgWidth,
                 "height": imgHeight
@@ -139,6 +141,8 @@ var uploadImage = (function () {
             k !== 1 ? _var.watermark.k = k : '';
             _var.watermark.currentWidth = imgWidth;
             _var.watermark.currentHeight = imgHeight;
+
+            //console.log('imgWidth: ' + imgWidth + ' imgHeight: ' + imgHeight + ' k:' + _var.watermark.k);
 
             watermarkWrapper.css({
                 "width": imgWidth,

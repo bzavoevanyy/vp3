@@ -1,55 +1,55 @@
 
-.settings-block{
-	&__button{
-		box-sizing: border-box;
-		border: none;
-	  border-radius: 3px;
-	  width: 99px;
-	  height: 42px;
-	  font-family: "RobotoMedium";
-	  font-weight: normal;
-	  font-size: 18px;
-	  color: #fff;
-	  margin-top: 46px;
-	  line-height: 38px;
+.settings-block {
+  &__button {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 3px;
+    width: 99px;
+    height: 42px;
+    font-family: "RobotoMedium";
+    font-weight: normal;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 46px;
+    line-height: 38px;
 
-	  &_reset{
-			background: #c1cfd9;
-			margin-left: 11px;
+    &_reset {
+      background: #c1cfd9;
+      margin-left: 11px;
 
-			&:hover{
-				background: darken(#c1cfd9, 5%);
-			}
-		}
+      &:hover {
+        background: darken(#c1cfd9, 5%);
+      }
+    }
 
-		&_submit{
-			background: $maincolor;
-			margin-left: 36px;
+    &_submit {
+      background: $maincolor;
+      margin-left: 36px;
 
-			&:hover{
-				border: 1px solid #da6d66;
-				background: darken($maincolor, 5%);
-				cursor: pointer;
-			}
+      &:hover {
+        border: 1px solid #da6d66;
+        background: darken($maincolor, 5%);
+        cursor: pointer;
+      }
 
-			&[disabled="disabled"]{
-				background: #ccc;
-		    border: 1px solid #adadad;
-		    opacity: 0.6;
-		    cursor: default;
-			}
-		}
-	  
-	  &:focus{
-	    outline-color: #d5756f;
-	  }
-	}
-	&_button{
-		&:last-child{
-			border: none;
-			&:after{
-				content: none;
-			}
-		}
-	}
+      .settings-block_disabled & {
+        background: #ccc;
+        border: 1px solid #adadad;
+        opacity: 0.6;
+        cursor: default;
+      }
+    }
+
+    &:focus {
+      outline-color: #d5756f;
+    }
+  }
+  &_button {
+    &:last-child {
+      border: none;
+      &:after {
+        content: none;
+      }
+    }
+  }
 }
