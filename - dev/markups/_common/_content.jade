@@ -17,12 +17,14 @@ main.container
 		.settings-block
 			.settings-block__title Исходное изображение
 			label.input-group
-				.input-group__fake-input.source
+				.input-group__fake-input
+					.input-group__fileName-box.source
 				input.input-group__input(id="source-file" type="file" name="source-file")
 
 			.settings-block__title(disabled="disabled") Водяной знак
 			label.input-group
-				.input-group__fake-input(disabled="disabled").watermark
+				.input-group__fake-input(disabled="disabled")
+					.input-group__fileName-box.watermark
 				input.input-group__input(id="watermark-file" type="file" name="watermark-file" disabled="disabled")
 		// Конец блока загрузки изображений
 
