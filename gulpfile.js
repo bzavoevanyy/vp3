@@ -53,6 +53,11 @@ var
             imgFolder: '- dev/img'
         },
 
+        data: {
+            langFileLocation: '- dev/data/languages.json',
+            destination: 'dist/data/.'
+        },
+
         js: {
             location: '- dev/scripts/*.js',
             plugins: '- dev/scripts/_plugins/*.js',
@@ -98,6 +103,14 @@ gulp.task('jade', function () {
             pretty: '\t'
         }))
         .pipe(gulp.dest(paths.jade.destination));
+});
+
+/* --------- data json copy --------- */
+
+gulp.task('data', function () {
+    gulp.src(paths.data.langFileLocation)
+        .pipe(plumber())
+        .pipe(gulp.dest(paths.data.destination));
 });
 
 /* --------- images copy --------- */
@@ -223,7 +236,7 @@ gulp.task('watch', function () {
 
 /* --------- build --------- */
 gulp.task('build', function (callback) {
-    runSequence('clean', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts', 'server'], callback);
+    runSequence('clean', ['jade', 'compass', 'plugins', 'scripts', 'images', 'favicon', 'fonts', 'server', 'data'], callback);
 });
 
 /* --------- default --------- */

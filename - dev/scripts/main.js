@@ -18,5 +18,7 @@ $(document).ready(function () {
 
     // Init reset button
     buttonActions.resetForm();
+
+    // Init change language function
     changeLang.init();
 });
