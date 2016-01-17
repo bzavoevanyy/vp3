@@ -1,5 +1,19 @@
 - var positions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right']
 
+.buttons
+		button.button.button__rus РУС
+		button.button.button__eng ENG
+
+		//Сдвигается вправо классом .button__like_open
+		.button.button__like
+			ul.social
+				li.social__list
+					a(href="#").social__item.social__item_fb facebook
+				li.social__list
+					a(href="#").social__item.social__item_tw twitter
+				li.social__list
+					a(href="#").social__item.social__item_vk vkontakte
+
 main.container
 	.generator
 		h1.generator__title Генератор водяных знаков
@@ -21,7 +35,7 @@ main.container
 					.input-group__fileName-box.source
 				div(id="source-file-error").source-file-error Ошибка!
 				input.input-group__input(id="source-file" type="file" name="source-file")
-								
+
 			.settings-block__title(disabled="disabled") Водяной знак
 			label.input-group
 				.input-group__fake-input(disabled="disabled")
