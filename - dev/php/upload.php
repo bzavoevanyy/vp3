@@ -39,11 +39,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $filename = $file['name'];
         $filename_new = time().'_'.$filename;
         move_uploaded_file($file["tmp_name"], __DIR__.'/uploads/'.$filename_new);
-        $filelink = 'uploads/'.$filename_new;
 
         $data['status'] = 'success';
         $data['message'] = 'Файл успешно загружен '.$file['type'];
-        $data['filelink'] = $filelink;
+        $data['filename'] = $filename_new;
     } else {
         $data['status'] = 'error';
         $data['message'] = 'Ошибка загрузки файла на сервер.';
