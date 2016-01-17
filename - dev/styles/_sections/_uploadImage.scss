@@ -1,15 +1,16 @@
-.input-group{
+.input-group {
   position: relative;
-  &__input{
+
+  &__input {
     position: absolute;
     opacity: 0;
 
-    &:focus{
+    &:focus {
       outline-color: #d5756f;
     }
   }
 
-  &__fileName-box{
+  &__fileName-box {
     display: block;
     width: inherit;
     height: inherit;
@@ -22,19 +23,19 @@
     text-overflow: ellipsis;
     padding: 2px 4px;
     padding-right: 40px;
-}
+  }
 
-  &__fake-input{
+  &__fake-input {
     width: 217px;
     height: 25px;
     border: 1px solid #a3b0be;
     border-radius: 3px;
-    margin: 0 20px;
+    margin: 0 20px 20px;
     background: #f1f1f5;
     position: relative;
-    margin-bottom: 20px;
+    cursor: pointer;
 
-    &:after{
+    &:after {
       content: ' ';
       display: inline-block;
       width: 39px;
@@ -49,28 +50,28 @@
       cursor: pointer;
     }
 
-    &:hover{
-      &:after{
+    &:hover {
+      &:after {
         background-color: darken($maincolor, 5%);
       }
     }
 
-    &:focus{
+    &:focus {
       outline-color: #d5756f;
     }
 
-    &[disabled="disabled"]{
+    .settings-block_disabled & {
       background: #ccc;
       border: 1px solid #adadad;
       opacity: 0.4;
       cursor: default;
 
-      &:after{
+      &:after {
         cursor: default;
       }
-      
-      &:hover{
-        &:after{
+
+      &:hover {
+        &:after {
           background-color: $maincolor;
         }
       }
@@ -78,15 +79,17 @@
   }
 }
 
-.source-file-error{
-    position: absolute;
-    font-family: 'RobotoLight';
-    font-size: 13px;
-    top: -17px;
-    left: 20px;
-    color: #CA4E46;
-    border: 1px solid rgba(202, 78, 70, 0.46);
-    border-radius: 4px;
-    padding: 0px 6px;
-    display: none;
+.file-error {
+  position: absolute;
+  z-index: 1;
+  font-family: 'RobotoLight';
+  font-size: 12px;
+  top: -17px;
+  left: 20px;
+  color: #CA4E46;
+  border: 1px solid rgba(202, 78, 70, 0.46);
+  border-radius: 4px;
+  padding: 4px 6px;
+  background: #fff;
+  width: 205px;
 }

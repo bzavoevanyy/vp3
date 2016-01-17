@@ -1,44 +1,38 @@
 $maincolor: #f97e76;
 $litecolor: lighten($maincolor, 11%);
 
-
-body{
-	background: url('../img/background.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-	min-width: 980px;
+body {
+  background: url('../img/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-width: 980px;
 }
 
-.russian{
-	// display: none;
+
+.maincontent {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
 }
 
-.english{
-	display: none;
-}
-
-.maincontent{
-	display: flex;
-	height: 100vh;
-	flex-direction: column;
-}
-
-.container{
-	margin: auto;
-	width: 960px;
-	height: 670px;
-	margin-bottom: 20px;	
+.container {
+  margin: auto;
+  width: 960px;
+  height: 670px;
+  margin-bottom: 20px;
 }
 
 .clearfix:before,
 .clearfix:after {
-	content: " ";
-	display: table;
+  content: " ";
+  display: table;
 }
+
 .clearfix:after {
-	clear: both;
+  clear: both;
 }
+
 .clearfix {
-	*zoom: 1;
+  *zoom: 1;
 }
