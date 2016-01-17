@@ -79,15 +79,17 @@
   }
 }
 
-.source-file-error {
+.file-error {
   position: absolute;
+  z-index: 1;
   font-family: 'RobotoLight';
-  font-size: 13px;
+  font-size: 12px;
   top: -17px;
   left: 20px;
   color: #CA4E46;
   border: 1px solid rgba(202, 78, 70, 0.46);
   border-radius: 4px;
-  padding: 0px 6px;
-  display: none;
+  padding: 4px 6px;
+  background: #fff;
+  width: 205px;
 }

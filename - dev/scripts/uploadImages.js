@@ -16,8 +16,8 @@ var uploadImage = (function () {
                     if (data.result.status === 'success') {
 
                         // remove error div
-                        var errors = $('.' + selector.substr(1) + '-error');
-                        errors ? errors.remove() : '';
+                        var error = $(selector + '-error');
+                        error ? error.remove() : '';
 
                         // add filename to fake input
                         addFileName(fakeSelector, data.originalFiles[0].name);
@@ -34,9 +34,9 @@ var uploadImage = (function () {
                         var parent = $(fakeSelector).closest('.input-group');
 
                         $('<div>', {
-                            id: selector + '-error',
+                            id: selector.substr(1) + '-error',
                             text: data.result.message,
-                            class: selector.substr(1) + '-error'
+                            class: 'file-error'
                         }).appendTo(parent);
                     }
                 },
