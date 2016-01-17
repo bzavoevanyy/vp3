@@ -19,7 +19,9 @@ $(document).ready(function () {
     // Init reset button
     buttonActions.resetForm();
 
+    // Init languages buttons
     changeLang.init();
 
+    // Init share module
     imageShare.init();
 });
