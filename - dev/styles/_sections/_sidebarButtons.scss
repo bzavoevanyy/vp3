@@ -1,0 +1,99 @@
+.buttons{
+	position: absolute;
+	left: 0;
+	margin-top: 15%;
+}
+
+.button{
+	display: block;
+  border: none;
+  margin-bottom: 1px;
+  width: 43px;
+  background-color: #d6d5d7;
+  color: #8e9298;
+  font-family: 'SegoeUILight';
+  font-size: 20px;
+  padding: 0;
+
+  &:hover{
+  	color: #333;
+  }
+
+  &:focus{
+	    outline-color: #d5756f;
+	}
+
+  &__rus{
+  	height: 35px;
+  }
+
+  &__eng{
+  	height: 33px;
+  	margin-bottom: 19px;
+  }
+
+  &__like{
+	  height: 41px;
+
+	  &_open{
+	  	margin-left: 43px;
+	  }
+
+  	&:after{
+  		content: ' ';
+  		display: block;
+  		width: 43px;
+	  	height: 41px;
+	  	background-image: url('../img/sprite.png');
+			background-position: -79px -6px;
+			opacity: 0.5;
+  	}
+	
+		&:hover{
+			&:after{
+				opacity: 1;
+				cursor: pointer;
+			}
+		}
+  }
+}
+
+.social{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	left: 0;
+	display: none;
+
+	&__list{
+		list-style: none;
+		display: block;
+		text-indent: -9999px;
+		background-color: #d6d5d7;
+	}
+
+	&__item{
+		display: block;
+		width: 43px;
+		height: 41px;
+		background-image: url('../img/sprite.png');
+		opacity: 0.5;
+
+		&:hover{
+			opacity: 1;
+		}
+
+		&_fb{
+			background-position: -41px -1px;
+		}
+
+		&_tw{
+			background-position: -126px -29px;
+		}
+
+		&_vk{
+			background-position: -109px -67px;
+		}
+	}
+}

@@ -15,6 +15,9 @@
 	/* --------- стили страницы и общие стили --------- */
 	@import "_sections/index";
 
+	/* --------- социалки и кнопки смены языка --------- */
+	@import "_sections/_sidebarButtons";
+	
 	/* --------- блок с водяным знаком --------- */
 	@import "_sections/generator";
 
@@ -35,6 +38,3 @@
 
 	/* ------ футер ------ */
 	@import "_sections/footer";
-
-	/* ------ футер ------ */
-	@import "_sections/inactive";

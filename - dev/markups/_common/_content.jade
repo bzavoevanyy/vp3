@@ -1,8 +1,23 @@
 - var positions = ['top-left', 'top-center', 'top-right', 'center-left', 'center-center', 'center-right', 'bottom-left', 'bottom-center', 'bottom-right']
 
+.buttons
+		button.button.button__rus РУС
+		button.button.button__eng ENG
+
+		//Сдвигается вправо классом .button__like_open
+		.button.button__like
+			ul.social
+				li.social__list
+					a(href="#").social__item.social__item_fb facebook
+				li.social__list
+					a(href="#").social__item.social__item_tw twitter
+				li.social__list
+					a(href="#").social__item.social__item_vk vkontakte
+
 main.container
 	.generator
-		h1.generator__title Генератор водяных знаков
+		h1.generator__title.russian Генератор водяных знаков
+		h1.generator__title.english Watermarks generator
 		//Для добавления паттерна после загрузки изображения нужно блоку .generator__box добавить класс .generator__box_filled
 		.generator__box
 			.generator__box-source
@@ -11,61 +26,73 @@ main.container
 					img(src='' alt='').generator__box-watermark-image
 
 	form.settings(action="server/upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
-		h2.settings__title Настройки
+		h2.settings__title.russian Настройки
+		h2.settings__title.english Settings
 
 		// Начало блока загрузки изображений
 		.settings-block
-			.settings-block__title Исходное изображение
+			.settings-block__title.russian Исходное изображение
+			.settings-block__title.english Original image
 			label.input-group
-				.input-group__fake-input.source
+				.input-group__fake-input
+					.input-group__fileName-box.source
+				div(id="source-file-error").source-file-error Ошибка!
 				input.input-group__input(id="source-file" type="file" name="source-file")
 
-			.settings-block__title Водяной знак
+			.settings-block__title.russian(disabled="disabled") Водяной знак
+			.settings-block__title.english(disabled="disabled") Watermark
 			label.input-group
-				.input-group__fake-input.watermark
+				.input-group__fake-input(disabled="disabled")
+					.input-group__fileName-box.watermark
+				div(id="source-file-error").source-file-error Ошибка!
 				input.input-group__input(id="watermark-file" type="file" name="watermark-file" disabled="disabled")
-		// Конец блока загрузки изображений
 
+		// Конец блока загрузки изображений
 
 		
 		.inactive
 			// Начало блока выбора положения водяного знака
 			.settings-block
-				.settings-block__title.settings-block__title_margin Положение
+				.settings-block__title(disabled="disabled").settings-block__title_margin.russian Положение
+				.settings-block__title(disabled="disabled").settings-block__title_margin.english Place
 
 				.settings-block__position
 					each position in positions
 						label.position-label
-							input.input-group__input.input-group__input-radio(type="radio" id="#{position}" value="#{position}" name="position" disabled="disabled")
-							.position-label__fake-radio
-
+							input.input-group__input.input-group__input-radio(type="radio" id="#{position}" value="#{position}" name="position")
+							.position-label__fake-radio(disabled="disabled")
+			
 				.settings-block__coords
 					label.coords-settings
-						p.coords-settings__title X
+						p.coords-settings__title(disabled="disabled") X
 						input.coords-settings__input(type="text" id="coordX" disabled="disabled" readonly="readonly")
-						div(data-axis="x" data-vector="top").coords-settings__arrow.coords-settings__top
-						div(data-axis="x" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
+						div(data-axis="x" data-vector="top").coords-settings__arrow.coords-settings__top(disabled="disabled")
+						div(data-axis="x" data-vector="bottom").coords-settings__arrow.coords-settings__bottom(disabled="disabled")
 
 					label.coords-settings
-						p.coords-settings__title Y
+						p.coords-settings__title(disabled="disabled") Y
 						input.coords-settings__input(type="text" id="coordY" disabled="disabled" readonly="readonly")
-						div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__top
-						div(data-axis="y" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
+						div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__top(disabled="disabled")
+						div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__bottom(disabled="disabled")
 				.clearfix
 			// Конец блока выбора положения водяного знака
 
 
 		// Начало блока слайдера прозрачности
 		.settings-block
-			.settings-block__title Прозрачность
+			.settings-block__title.russian Прозрачность
+			.settings-block__title.english Transparency
 			input.settings-block__input(type="text" id="opacityInput")
 			.settings-block__slider
 		// Конец блока слайдера прозрачности
 
 		// Начало блока кнопок
 		.settings-block.settings-block_button
-				button.settings-block__button.settings-block__button_reset(type="reset" id="resetForm") Сброс
-				button.settings-block__button.settings-block__button_submit(type="submit" id="download" disabled="disabled") Скачать
+				button.settings-block__button.settings-block__button_reset.russian(type="reset" id="resetForm") Сброс
+				button.settings-block__button.settings-block__button_reset.english(type="reset" id="resetForm") Reset
+
+				button.settings-block__button.settings-block__button_submit.russian(type="submit" id="download" disabled="disabled") Скачать
+				button.settings-block__button.settings-block__button_submit.english(type="submit" id="download" disabled="disabled") Download
 		// Конец блока кнопок
 
 
