@@ -16,5 +16,6 @@ $(document).ready(function () {
     // Send data to server
     buttonActions.sendData();
 
-    reset.init();
+    // Init reset button
+    buttonActions.resetForm();
 });

@@ -40,7 +40,16 @@ var buttonActions = (function () {
     }
 
     function resetForm() {
-        console.log('reset form');
+        var resetButton = $(_var.buttons.reset);
+
+        resetButton.on('click', function (e) {
+            e.preventDefault();
+
+            $(_var.position.inputs + '#top-left').prop('checked', true);
+            wPosition.moveWatermark(0, 0);
+            $(_var.opacity.rangeElement).slider("value", 100);
+            $(_var.watermark.wrap).css('opacity', 100);
+        });
     }
 
     return {

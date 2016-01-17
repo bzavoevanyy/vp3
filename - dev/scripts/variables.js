@@ -27,7 +27,8 @@ var _var = (function () {
         },
         buttons: {
             form: '#form-upload',
-            submit: '.settings-block__button_submit'
+            submit: '#download',
+            reset: '#resetForm'
         },
         coordinates: {
             inputs: '.coords-settings__input',
