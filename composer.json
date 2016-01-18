@@ -7,6 +7,6 @@
     }
   ],
   "require": {
-    "smottt/wideimage": "1.1.1"
+    "abeautifulsite/simpleimage": "2.6.0"
   }
 }
