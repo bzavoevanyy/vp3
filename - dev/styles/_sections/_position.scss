@@ -101,6 +101,32 @@
     .settings-block_disabled & {
       color: #ccc;
     }
+
+    &_x {
+      &.coords-settings__title_tiling {
+        position: absolute;
+        background: url('../img/sprite.png');
+        width: 14px;
+        height: 30px;
+        background-position: -61px -63px;
+        left: -16px;
+        top: 10px;
+        color: transparent;
+      }
+    }
+
+    &_y {
+      &.coords-settings__title_tiling {
+        position: absolute;
+        background: url('../img/sprite.png');
+        width: 29px;
+        height: 9px;
+        background-position: -132px -10px;
+        left: -33px;
+        top: 18px;
+        color: transparent;
+      }
+    }
   }
 
   &__input {
@@ -220,9 +246,10 @@
 
     &.place-button_active {
       background-position: -10px -87px;
+      opacity: 1;
 
       &:hover {
-        opacity: .7;
+        opacity: 1;
         cursor: default;
       }
     }
@@ -245,37 +272,12 @@
 
     &.place-button_active {
       background-position: -33px -62px;
+      opacity: 1;
 
       &:hover {
-        opacity: .7;
+        opacity: 1;
         cursor: default;
       }
     }
   }
-}
-
-.coords-settings__title {
-  // display: none;
-}
-
-.coords-settings__title_arr {
-  position: absolute;
-  background: url('../img/sprite.png');
-  width: 14px;
-  height: 30px;
-  background-position: -61px -63px;
-  left: -16px;
-  top: 10px;
-  display: none;
-}
-
-.coords-settings__title_arrow {
-  position: absolute;
-  background: url('../img/sprite.png');
-  width: 29px;
-  height: 9px;
-  background-position: -132px -10px;
-  left: -33px;
-  top: 18px;
-  display: none;
 }

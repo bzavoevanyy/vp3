@@ -100,17 +100,101 @@ var wPosition = (function () {
         });
 
         // Mode change
-        $(_var.mode.buttons).on('click', function(){
+        $(_var.mode.buttons).on('click', function () {
             var currentButton = $(this),
                 buttons = $(_var.mode.buttons),
-                currentMode = currentButton.attr('id').split('-')[2];
+                currentMode = currentButton.attr('id').split('-')[2],
+                sourceImage = $(_var.sourceImage.wrap);
+
 
             _var.mode.current = currentMode;
 
             buttons.removeClass('place-button_active');
             currentButton.addClass('place-button_active');
 
+            if (currentMode === 'tiling') {
+                $(_var.watermark.tiling).fadeIn(200);
+                $(_var.watermark.wrap).fadeOut(200);
+
+                $(_var.watermark.tiling).empty();
+                generateTilingBlock();
+
+                $('.coords-settings__title').addClass('coords-settings__title_tiling');
+
+                $('.settings-block__position-list').css('pointer-events', 'none');
+                $('.settings-block__position-place').fadeIn(200);
+
+                // Init draggable move watermark by mouse
+                $(_var.watermark.tiling).draggable({
+                    disabled: false,
+                    drag: function (event, ui) {
+                        showCoordinates();
+                    },
+                    containment: '.generator__box-tiling-wrap',
+                    scroll: false
+                });
+            } else {
+                $(_var.watermark.tiling).fadeOut(200);
+                $(_var.watermark.wrap).fadeIn(200);
+
+                $('.coords-settings__title').removeClass('coords-settings__title_tiling');
+
+                $('.settings-block__position-list').css('pointer-events', 'auto');
+                $('.settings-block__position-place').fadeOut(200);
+
+                // Disable draggable move watermark by mouse
+                $(_var.watermark.tiling).draggable({
+                    disabled: true
+                });
+            }
         });
+    }
+
+    // Generate tiling
+    function generateTilingBlock() {
+        var maxWidth = _var.sourceImage.currentWidth,
+            maxHeight = _var.sourceImage.currentHeight,
+            watermarkWidth = _var.watermark.currentWidth,
+            watermarkHeight = _var.watermark.currentHeight,
+            tilingWrap = $(_var.watermark.tilingWrap),
+            tilingBlock = $(_var.watermark.tiling),
+            watermark = $(_var.watermark.image),
+            clone = null,
+            gutterLeft = 10,
+            gutterBottom = 10,
+            i = 0,
+            l = 0,
+            xWatermarkCount,
+            yWatermarkCount;
+
+        xWatermarkCount = Math.round(maxWidth / watermarkWidth) + 2;
+        yWatermarkCount = Math.round(maxHeight / watermarkHeight) + 2;
+
+        tilingBlock
+            .width(xWatermarkCount * (watermarkWidth + gutterLeft))
+            .height(yWatermarkCount * (watermarkHeight + gutterBottom));
+
+        tilingWrap
+            .width((xWatermarkCount + 0.5) * (watermarkWidth + gutterLeft))
+            .height((yWatermarkCount + 0.5) * (watermarkHeight + gutterBottom))
+            .css({
+                'margin-left': -watermarkWidth,
+                'margin-top': -watermarkHeight
+            });
+
+        for (i, l = xWatermarkCount * yWatermarkCount; i < l; i++) {
+            clone = watermark.clone();
+
+            clone.css({
+                display: 'block',
+                position: 'static',
+                float: 'left',
+                'margin-left': gutterLeft,
+                'margin-bottom': gutterBottom
+            });
+
+            tilingBlock.append(clone);
+        }
     }
 
     // Calculate coordinate plus or minus after click by arrow

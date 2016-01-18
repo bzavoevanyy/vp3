@@ -23,17 +23,24 @@
     background: #f1f1f5;
     position: relative;
   }
-  
+
   //Для добавления паттерна после загрузки изображения нужно блоку .generator__box добавить класс .generator__box_filled
   &__box_filled {
     background-image: url('../img/pattern.png');
     background-repeat: repeat;
   }
 
+  &__box-tiling {
+    position: absolute;
+    background: #fff;
+    cursor: pointer;
+  }
+
   &__box-source {
     position: absolute;
     width: 651px;
     height: 534px;
+    overflow: hidden;
     @include absolute-center();
 
     &-image {

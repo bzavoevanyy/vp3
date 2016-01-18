@@ -20,6 +20,8 @@ var _var = (function () {
             fakeInput: '.input-group__fileName-box.watermark',
             wrap: '.generator__box-watermark',
             image: '.generator__box-watermark-image',
+            tilingWrap: '.generator__box-tiling-wrap',
+            tiling: '.generator__box-tiling',
             k: 1,
             currentWidth: 0,
             currentHeight: 0,

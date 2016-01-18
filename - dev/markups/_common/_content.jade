@@ -22,6 +22,8 @@ main.container
                 img(src='' alt='').generator__box-source-image
                 .generator__box-watermark
                     img(src='' alt='').generator__box-watermark-image
+                .generator__box-tiling-wrap
+                    .generator__box-tiling
 
     form.settings(action="server/upload.php" method="post" enctype="multipart/form-data" id="form-upload" name="form")
         h2.settings__title Настройки
@@ -63,15 +65,15 @@ main.container
 
             .settings-block__coords
                 label.coords-settings
-                    .coords-settings__title X
-                    .coords-settings__title_arr
+                    .coords-settings__title.coords-settings__title_x X
+                    //.coords-settings__title_arr
                     input.coords-settings__input(type="text" id="coordX" disabled="disabled" readonly="readonly")
                     div(data-axis="x" data-vector="top").coords-settings__arrow.coords-settings__top
                     div(data-axis="x" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
 
                 label.coords-settings
-                    .coords-settings__title Y
-                    .coords-settings__title_arrow
+                    .coords-settings__title.coords-settings__title_y Y
+                    //.coords-settings__title_arrow
                     input(type="text" id="coordY" disabled="disabled" readonly="readonly").coords-settings__input
                     div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__top
                     div(data-axis="y" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
