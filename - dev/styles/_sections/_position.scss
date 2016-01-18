@@ -174,16 +174,16 @@
   }
 }
 
-.settings-block__position-place{
-    position: absolute;
-    width: 102px;
-    height: 101px;
-    left: 20px;
-    margin-top: -1px; 
-    display: none;
+.settings-block__position-place {
+  position: absolute;
+  width: 102px;
+  height: 101px;
+  left: 20px;
+  margin-top: -1px;
+  display: none;
 }
 
-.position-place_x{
+.position-place_x {
   display: block;
   width: 101px;
   height: 20px;
@@ -194,7 +194,7 @@
 
 }
 
-.position-place_y{
+.position-place_y {
   height: 101px;
   width: 20px;
   background: $maincolor;
@@ -202,77 +202,80 @@
   cursor: pointer;
 }
 
-
-.place-butt{
-	position: absolute;
-	top: 0;
-	right: 10px;
+.place-butt {
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
 
-.place-button{
-	display: inline-block;
-	background-image: url('../img/sprite.png');
-	width: 19px;
-	height: 19px;
-	
-	// Стиль кнопки в активном состоянии
-	// &_deployment{
-	// 	background-position: -33px -62px;
-	//	margin-left: 6px;
-	// 	&:hover{
-	// 		cursor: default;
-	// 	}
-	// }
-	// 
-	&_deployment{
-		background-position: -10px -62px;
-		opacity: 0.5;
-		margin-left: 6px;
-		
-		&:hover{
-			opacity: 1;
-			cursor: pointer;
-		}
-	}
+.place-button {
+  display: inline-block;
+  background-image: url('../img/sprite.png');
+  width: 19px;
+  height: 19px;
 
-	// Стиль кнопки в неактивном состоянии
-	// &_replacement{
-	// 	background-position: -33px -87px;
-	// 	opacity: 0.5;
+  &_alone {
+    background-position: -33px -87px;
+    opacity: .7;
 
-	// 	&:hover{
-	// 		opacity: 1;
-	// 		cursor: pointer;
-	// 	}
-	// }
+    &.place-button_active {
+      background-position: -10px -87px;
 
-	&_replacement{
-		background-position: -10px -87px;
-	}
+      &:hover {
+        opacity: .7;
+        cursor: default;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &_tiling {
+    background-position: -10px -62px;
+    opacity: 0.7;
+    margin-left: 6px;
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    &.place-button_active {
+      background-position: -33px -62px;
+
+      &:hover {
+        opacity: .7;
+        cursor: default;
+      }
+    }
+  }
 }
 
-.coords-settings__title{
+.coords-settings__title {
   // display: none;
 }
 
-.coords-settings__title_arr{
+.coords-settings__title_arr {
   position: absolute;
   background: url('../img/sprite.png');
-    width: 14px;
-    height: 30px;
-    background-position: -61px -63px;
-    left: -16px;
-    top: 10px;
-      display: none;
+  width: 14px;
+  height: 30px;
+  background-position: -61px -63px;
+  left: -16px;
+  top: 10px;
+  display: none;
 }
 
-.coords-settings__title_arrow{
+.coords-settings__title_arrow {
   position: absolute;
   background: url('../img/sprite.png');
   width: 29px;
-    height: 9px;
-    background-position: -132px -10px;
-    left: -33px;
-    top: 18px;
-      display: none;
+  height: 9px;
+  background-position: -132px -10px;
+  left: -33px;
+  top: 18px;
+  display: none;
 }

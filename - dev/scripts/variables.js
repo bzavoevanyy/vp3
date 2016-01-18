@@ -42,6 +42,12 @@ var _var = (function () {
             left: '#coordX',
             top: '#coordY',
             arrows: '.coords-settings__arrow'
+        },
+        mode: {
+            current: 'alone',
+            aloneButtonId: '#place-button-alone',
+            tilingButtonId: '#place-button-tiling',
+            buttons: '.place-button'
         }
     };
 })();

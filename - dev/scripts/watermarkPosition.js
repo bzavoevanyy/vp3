@@ -98,6 +98,19 @@ var wPosition = (function () {
 
             moveWatermark(newX, newY);
         });
+
+        // Mode change
+        $(_var.mode.buttons).on('click', function(){
+            var currentButton = $(this),
+                buttons = $(_var.mode.buttons),
+                currentMode = currentButton.attr('id').split('-')[2];
+
+            _var.mode.current = currentMode;
+
+            buttons.removeClass('place-button_active');
+            currentButton.addClass('place-button_active');
+
+        });
     }
 
     // Calculate coordinate plus or minus after click by arrow
