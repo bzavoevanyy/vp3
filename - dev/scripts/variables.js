@@ -25,7 +25,9 @@ var _var = (function () {
             k: 1,
             currentWidth: 0,
             currentHeight: 0,
-            filename : ''
+            filename : '',
+            gutterLeft: 10,
+            gutterBottom: 10
         },
         opacity: {
             section: '#settings-block-opacity',

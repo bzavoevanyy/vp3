@@ -15,7 +15,10 @@ var buttonActions = (function () {
                     watermarkK: _var.watermark.k,
                     opacity: $(_var.opacity.input).val() || 100,
                     x: $(_var.coordinates.left).val(),
-                    y: $(_var.coordinates.top).val()
+                    y: $(_var.coordinates.top).val(),
+                    mode: _var.mode.current,
+                    gutterLeft: _var.watermark.gutterLeft,
+                    gutterBottom: _var.watermark.gutterBottom
                 };
 
             console.log(data);
@@ -42,24 +45,29 @@ var buttonActions = (function () {
     }
 
     function resetForm() {
+        var items = $('.settings-block__position-item');
+
+        items.removeClass('settings-block__position-item_active');
+
+        wPosition.moveWatermark(0, 0);
+        $(_var.opacity.rangeElement).slider("value", 100);
+        $(_var.watermark.wrap).css('opacity', 100);
+    }
+
+    function resetFormInit() {
         var resetButton = $(_var.buttons.reset);
 
         resetButton.on('click', function (e) {
             e.preventDefault();
 
-            var items = $('.settings-block__position-item');
-
-            items.removeClass('settings-block__position-item_active');
-
-            wPosition.moveWatermark(0, 0);
-            $(_var.opacity.rangeElement).slider("value", 100);
-            $(_var.watermark.wrap).css('opacity', 100);
+            resetForm();
         });
     }
 
     return {
         sendData: sendData,
-        resetForm: resetForm
+        resetForm: resetForm,
+        resetFormInit: resetFormInit
     }
 
 })();

@@ -10,14 +10,14 @@ $(document).ready(function () {
     // Init opacity range
     opacityRange.init();
 
+    // Init reset button
+    buttonActions.resetFormInit();
+
     // Watermark Position Module init
     wPosition.init();
 
     // Send data to server
     buttonActions.sendData();
-
-    // Init reset button
-    buttonActions.resetForm();
 
     // Init languages buttons
     changeLang.init();

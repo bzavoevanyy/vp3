@@ -92,11 +92,24 @@ var wPosition = (function () {
                 newX = coordinates.left,
                 newY = coordinates.top;
 
-            axis === 'x' ?
-                newX = calcCoordinateByArrow(axis, vector, coordinates.left, _var.watermark.currentWidth) :
-                newY = calcCoordinateByArrow(axis, vector, coordinates.top, _var.watermark.currentHeight);
+            if (_var.mode.current === 'alone') {
+                axis === 'x' ?
+                    newX = calcCoordinateByArrow(axis, vector, coordinates.left, _var.watermark.currentWidth) :
+                    newY = calcCoordinateByArrow(axis, vector, coordinates.top, _var.watermark.currentHeight);
 
-            moveWatermark(newX, newY);
+                moveWatermark(newX, newY);
+
+            } else {
+                axis === 'x' ?
+                    _var.watermark.gutterLeft = calcGutter(vector, _var.watermark.gutterLeft) :
+                    _var.watermark.gutterBottom = calcGutter(vector, _var.watermark.gutterBottom);
+
+                $(_var.coordinates.left).val(_var.watermark.gutterLeft);
+                $(_var.coordinates.top).val(_var.watermark.gutterBottom);
+
+                $(_var.watermark.tiling).empty();
+                generateTilingBlock();
+            }
         });
 
         // Mode change
@@ -124,15 +137,18 @@ var wPosition = (function () {
                 $('.settings-block__position-list').css('pointer-events', 'none');
                 $('.settings-block__position-place').fadeIn(200);
 
+                buttonActions.resetForm();
+
                 // Init draggable move watermark by mouse
                 $(_var.watermark.tiling).draggable({
                     disabled: false,
                     drag: function (event, ui) {
-                        showCoordinates();
+                        //showCoordinates();
                     },
                     containment: '.generator__box-tiling-wrap',
                     scroll: false
                 });
+
             } else {
                 $(_var.watermark.tiling).fadeOut(200);
                 $(_var.watermark.wrap).fadeIn(200);
@@ -141,6 +157,8 @@ var wPosition = (function () {
 
                 $('.settings-block__position-list').css('pointer-events', 'auto');
                 $('.settings-block__position-place').fadeOut(200);
+
+                buttonActions.resetForm();
 
                 // Disable draggable move watermark by mouse
                 $(_var.watermark.tiling).draggable({
@@ -160,8 +178,8 @@ var wPosition = (function () {
             tilingBlock = $(_var.watermark.tiling),
             watermark = $(_var.watermark.image),
             clone = null,
-            gutterLeft = 10,
-            gutterBottom = 10,
+            gutterLeft = _var.watermark.gutterLeft,
+            gutterBottom = _var.watermark.gutterBottom,
             i = 0,
             l = 0,
             xWatermarkCount,
@@ -195,6 +213,17 @@ var wPosition = (function () {
 
             tilingBlock.append(clone);
         }
+    }
+
+    // Calculate gutter
+    function calcGutter(vector, gutter) {
+        var result;
+
+        vector === 'top' ?
+            result = gutter + 1 :
+            result = ((gutter - 1) !== 0) ? (gutter - 1) : gutter;
+
+        return result;
     }
 
     // Calculate coordinate plus or minus after click by arrow
@@ -246,6 +275,7 @@ var wPosition = (function () {
         init: init,
         showCoordinates: showCoordinates,
         moveWatermark: moveWatermark,
-        getCoordinates: getCoordinates
+        getCoordinates: getCoordinates,
+        generateTilingBlock: generateTilingBlock
     };
 })();
