@@ -45,7 +45,7 @@
 
 |                        | E-mail                      | Git                               | Роль       |
 |:---------------------- |:--------------------------- |:---------------------------------:| ----------:|
-| Александр Собакарь     | xaosaki@gmail.com           |                                   | Наставник  |
+| Александр Собакарь     | xaosaki@gmail.com           | https://github.com/xaosaki        | Наставник  |
 | Богдан Завоеваный      | bzavoevanyy@gmail.com       | https://github.com/bzavoevanyy    | Teamlead   |
 | Антон Яковлев          | yakovlev.business@gmail.com | https://github.com/anton-yakovlev | JS         |
 | Бовдырь Сергей         | bovdirserg@gmail.com        | https://github.com/BovdyrSergiy   | JS         |
