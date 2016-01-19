@@ -12,17 +12,50 @@ var imageShare = (function () {
                 $('.social').hide(200);
             });
         });
+
+        var site = 'https://www.addwater-mark.com',
+            title = 'Watermark Generator',
+            disc = 'This picture was make by watermark generator';
+
         $('.social__item_fb').on('click', function(e) {
             e.preventDefault();
-            console.log('fb')
+
+            img = $('.fake-link').attr("href");
+
+            if (img == undefined) img = '/img/sociallogo.png';
+            fulllink = site + img;
+
+            FB.ui(
+                {
+                    method: 'feed',
+                    caption : 'Генератор водяных знаков',
+                    picture: fulllink,
+                    description : disc,
+                    link : site,
+                    name : title
+                });
+
         });
         $('.social__item_tw').on('click', function(e) {
             e.preventDefault();
-            console.log('tw')
+
+            var data = 'http://twitter.com/share?url=' + site + '&text=' + disc;
+            console.log(data);
+                window.open(data);
+
         });
         $('.social__item_vk').on('click', function(e) {
             e.preventDefault();
-            console.log('vk')
+
+            var url = 'http://vkontakte.ru/share.php?',
+                img = $('.fake-link').attr("href");
+
+            if (img == undefined) img = '/img/sociallogo.png';
+
+            imgLink = encodeURIComponent(site) + encodeURIComponent(img);
+
+            var fullUrl = url + 'url=' + encodeURIComponent(site) + '&title=' + encodeURIComponent(title) + '&description=' + encodeURIComponent(disc) + '&image=' + imgLink;
+            window.open(fullUrl);
         });
     };
 

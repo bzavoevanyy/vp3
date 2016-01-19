@@ -27,6 +27,7 @@ var uploadImage = (function () {
                         if (isSourceImage) {
                             showSourceImage(serverPath + data.result.filename);
                             _var.sourceImage.filename = data.result.filename;
+                            $('.generator__box').addClass('generator__box_filled');
                         } else {
                             showMarkImage(serverPath + data.result.filename);
                             _var.watermark.filename = data.result.filename;
