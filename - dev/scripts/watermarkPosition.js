@@ -138,14 +138,18 @@ var wPosition = (function () {
                 $('.settings-block__position-place').fadeIn(200);
 
                 buttonActions.resetForm();
+                $(_var.watermark.wrap).draggable({
+                    disabled: true
 
+                });
                 // Init draggable move watermark by mouse
                 $(_var.watermark.tiling).draggable({
                     disabled: false,
                     drag: function (event, ui) {
                         //showCoordinates();
                     },
-                    containment: '.generator__box-tiling-wrap',
+                    //containment: '.generator__box-tiling-wrap',
+                    containment: 'window',
                     scroll: false
                 });
 
@@ -163,6 +167,10 @@ var wPosition = (function () {
                 // Disable draggable move watermark by mouse
                 $(_var.watermark.tiling).draggable({
                     disabled: true
+                });
+
+                $(_var.watermark.wrap).draggable({
+                    disabled: false
                 });
             }
         });
