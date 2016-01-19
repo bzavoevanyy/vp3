@@ -18,7 +18,9 @@ var buttonActions = (function () {
                     y: $(_var.coordinates.top).val(),
                     mode: _var.mode.current,
                     gutterLeft: _var.watermark.gutterLeft,
-                    gutterBottom: _var.watermark.gutterBottom
+                    gutterBottom: _var.watermark.gutterBottom,
+                    top : _var.watermark.top,
+                    left: _var.watermark.left
                 };
 
             console.log(data);

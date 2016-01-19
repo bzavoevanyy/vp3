@@ -109,6 +109,8 @@ var wPosition = (function () {
 
                 $(_var.watermark.tiling).empty();
                 generateTilingBlock();
+                _var.watermark.top = $(_var.watermark.tiling).position().top;
+                _var.watermark.left = $(_var.watermark.tiling).position().left;
             }
         });
 
@@ -126,6 +128,7 @@ var wPosition = (function () {
             currentButton.addClass('place-button_active');
 
             if (currentMode === 'tiling') {
+                _var.mode.current = 'tiling';
                 $(_var.watermark.tiling).fadeIn(200);
                 $(_var.watermark.wrap).fadeOut(200);
 
@@ -146,7 +149,9 @@ var wPosition = (function () {
                 $(_var.watermark.tiling).draggable({
                     disabled: false,
                     drag: function (event, ui) {
-                        //showCoordinates();
+                        //console.log($(_var.watermark.tiling).position(), _var.watermark.gutterLeft, _var.watermark.gutterBottom);
+                        _var.watermark.top = $(_var.watermark.tiling).position().top;
+                        _var.watermark.left = $(_var.watermark.tiling).position().left;
                     },
                     //containment: '.generator__box-tiling-wrap',
                     containment: 'window',
@@ -156,7 +161,7 @@ var wPosition = (function () {
             } else {
                 $(_var.watermark.tiling).fadeOut(200);
                 $(_var.watermark.wrap).fadeIn(200);
-
+                _var.mode.current = 'alone';
                 $('.coords-settings__title').removeClass('coords-settings__title_tiling');
 
                 $('.settings-block__position-list').css('pointer-events', 'auto');
