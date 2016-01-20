@@ -1,5 +1,5 @@
 <?php
-require_once "../../vendor/autoload.php";
+require_once "../vendor/autoload.php";
 
 $sourceImage = $_POST['sourceImage'];
 $watermark = $_POST['watermark'];

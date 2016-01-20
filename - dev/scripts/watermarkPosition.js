@@ -145,7 +145,10 @@ var wPosition = (function () {
                     disabled: true
 
                 });
+                $(_var.coordinates.left).val(_var.watermark.gutterLeft);
+                $(_var.coordinates.top).val(_var.watermark.gutterBottom);
                 // Init draggable move watermark by mouse
+
                 $(_var.watermark.tiling).draggable({
                     disabled: false,
                     drag: function (event, ui) {
@@ -154,7 +157,7 @@ var wPosition = (function () {
                         _var.watermark.left = $(_var.watermark.tiling).position().left;
                     },
                     //containment: '.generator__box-tiling-wrap',
-                    containment: 'window',
+                    containment: [-9999, -9999, 9999, 9999],
                     scroll: false
                 });
 
@@ -198,8 +201,8 @@ var wPosition = (function () {
             xWatermarkCount,
             yWatermarkCount;
 
-        xWatermarkCount = Math.round(maxWidth / watermarkWidth) + 2;
-        yWatermarkCount = Math.round(maxHeight / watermarkHeight) + 2;
+        xWatermarkCount = Math.round(maxWidth / watermarkWidth)+2;
+        yWatermarkCount = Math.round(maxHeight / watermarkHeight)+2;
 
         tilingBlock
             .width(xWatermarkCount * (watermarkWidth + gutterLeft))
