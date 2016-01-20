@@ -1,5 +1,5 @@
 <?php
-require_once "../vendor/autoload.php";
+require_once "../../vendor/autoload.php";
 
 $sourceImage = $_POST['sourceImage'];
 $watermark = $_POST['watermark'];
@@ -37,49 +37,35 @@ if ($mode == 'tiling') {
     $offsetY = ($top);
     $positionY = fmod($offsetY, $waterSizeHeight/$sourceK);
 
-while (abs($positionY) < $imgSize[1]) {
+    while (abs($positionY) < $imgSize[1]) {
 
-    while ($offsetX < $imgSize[0]) {
-        if ($offsetX < 0) {
-            if (abs($offsetX) > $waterSizeWidth / $sourceK) {
-
-                $positionX = fmod($offsetX, $waterSizeWidth / $sourceK);
-
-                $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-
-                $offsetX = $positionX + $waterSizeWidth + $marginleft;
-
-
+        while ($offsetX < $imgSize[0]) {
+            if ($offsetX < 0) {
+                if (abs($offsetX) > $waterSizeWidth / $sourceK) {
+                    $positionX = fmod($offsetX, $waterSizeWidth / $sourceK);
+                    $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
+                    $offsetX = $positionX + $waterSizeWidth + $marginleft;
+                } else {
+                    $positionX = $offsetX;
+                    $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
+                    $offsetX += ($waterSizeWidth - abs($positionX)) + $marginleft;
+                }
             } else {
-
-                $positionX = $offsetX;
+                $positionX = $offsetX + $marginleft;
+                $offsetX = $positionX;
                 $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-                $offsetX += ($waterSizeWidth - abs($positionX)) + $marginleft;
-
+                $offsetX = $offsetX + $waterSizeWidth + $marginleft;
             }
-        } else {
-            $positionX = $offsetX + $marginleft;
-            $offsetX = $positionX;
-            $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-            $offsetX = $offsetX + $waterSizeWidth + $marginleft;
         }
-
+        $offsetX = $left;
+        $positionY += $waterSizeHeight + $marginbottom;
     }
-    $offsetX = $left;
-    $positionY += $waterSizeHeight + $marginbottom;
-}
-    $image->save("uploads/result.png");
-    $data = '/server/uploads/result.png';
-
-    echo json_encode($data);
-
-
 } elseif ($mode == 'alone') {
     $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-    $image->save("uploads/result.png");
-
-    $data = '/server/uploads/result.png';
-
-    echo json_encode($data);
 }
+$result_name = time().'.png';
+$image->save('uploads/'.$result_name);
+$data = '/server/uploads/'.$result_name;
+
+echo json_encode($data);
 exit;
