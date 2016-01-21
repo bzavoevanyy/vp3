@@ -12,7 +12,12 @@ var uploadImage = (function () {
                 url: serverPath + 'upload.php',
                 type: 'POST',
                 dataType: 'json',
+                add: function(e, data) {
+                    $('#circularG').show();
+                    data.submit();
+                },
                 done: function (e, data) {
+                    $('#circularG').hide();
                     if (data.result.status === 'success') {
 
                         // remove error div
@@ -149,7 +154,7 @@ var uploadImage = (function () {
 
             imgWidth = imgWidth / sourceImageK;
             imgHeight = imgHeight / sourceImageK;
-
+            $('.generator__box-watermark-image').show();
             if (imgWidth >= imgHeight) {
                 if (imgWidth >= maxWidth) {
                     k1 = imgWidth / maxWidth;

@@ -6,7 +6,7 @@ var buttonActions = (function () {
 
         form.on('submit', function (e) {
             e.preventDefault();
-
+            $('#circularG').show();
             var defObject,
                 data = {
                     sourceImage: _var.sourceImage.filename,
@@ -35,9 +35,10 @@ var buttonActions = (function () {
             defObj
                 .fail(function () {
                     console.log('server error');
+                    $('#circularG').hide();
                 })
                 .done(function (answer) {
-
+                    $('#circularG').hide();
                     $('.fake-link').attr("href",answer)[0].click();
 
                 });
