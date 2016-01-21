@@ -23,7 +23,7 @@ var buttonActions = (function () {
                     left: _var.watermark.left
                 };
 
-            console.log(data);
+
 
             defObj = $.ajax({
                 url: 'server/processing.php',
@@ -51,9 +51,13 @@ var buttonActions = (function () {
 
         items.removeClass('settings-block__position-item_active');
 
-        wPosition.moveWatermark(0, 0);
+        $(_var.watermark.wrap).css({
+            'left': 0,
+            'top': 0
+        });
         $(_var.opacity.rangeElement).slider("value", 100);
-        $(_var.watermark.wrap).css('opacity', 100);
+        $(_var.watermark.wrap).css('opacity', 1);
+        $(_var.watermark.tiling).css('opacity', 1);
     }
 
     function resetFormInit() {
@@ -63,6 +67,20 @@ var buttonActions = (function () {
             e.preventDefault();
 
             resetForm();
+            if (_var.mode.current === 'tiling') {
+                _var.watermark.gutterLeft = 10;
+                _var.watermark.gutterBottom = 10;
+                $(_var.watermark.tiling).css({
+                    'top': 0,
+                    'left': 0
+                });
+                $(_var.watermark.tiling).empty();
+                wPosition.generateTilingBlock();
+                $(_var.coordinates.left).val(_var.watermark.gutterLeft);
+                $(_var.coordinates.top).val(_var.watermark.gutterBottom);
+            } else {
+                wPosition.showCoordinates();
+            }
         });
     }
 

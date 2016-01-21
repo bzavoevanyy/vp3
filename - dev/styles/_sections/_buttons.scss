@@ -20,11 +20,18 @@
       &:hover {
         background: darken(#c1cfd9, 5%);
       }
+      .settings-block_disabled & {
+        background: #ccc;
+        border: 1px solid #adadad;
+        opacity: 0.6;
+        cursor: default;
+      }
     }
 
     &_submit {
       background: $maincolor;
       margin-left: 36px;
+      border: 1px solid #F1F1F5;
 
       &:hover {
         border: 1px solid #da6d66;

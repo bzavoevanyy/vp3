@@ -9,10 +9,10 @@ $positionX = $_POST['x']*$sourceK;
 $positionY = $_POST['y']*$sourceK;
 $opacity = $_POST['opacity']/100;
 $mode = $_POST['mode'];
-$top = $_POST['top'];
-$left = $_POST['left'];
-$marginleft = $_POST['gutterLeft'];
-$marginbottom = $_POST['gutterBottom'];
+$top = $_POST['top']*$sourceK;;
+$left = $_POST['left']*$sourceK;;
+$marginleft = $_POST['gutterLeft']*$sourceK;
+$marginbottom = $_POST['gutterBottom']*$sourceK;
 
 
 
@@ -24,42 +24,26 @@ if ($watermarkK > 1) {
     $newWidth = $imgInfo[0]/$watermarkK;
     $newHeight = $imgInfo[1]/$watermarkK;
     $image_watermark = $image_watermark->resize($newWidth, $newHeight);
+    $image_watermark->save($watermark);
 }
 if ($mode == 'tiling') {
-    $positionX = 0;
-    $positionY = 0;
-    $imgSize = getimagesize($sourceImage);
-    $waterSize = getimagesize($watermark);
+    $sourceSize = getimagesize($sourceImage);
+    $watermarkSize = getimagesize($watermark);
+    $sourceWidth = $sourceSize[0];
+    $sourceHeight = $sourceSize[1];
+    $offsetX = $left;
+    //$data = $sourceWidth;
+    for ($top; $top < $sourceHeight; $top += ($watermarkSize[1] + $marginbottom)) {
 
-    $waterSizeWidth = $waterSize[0];
-    $waterSizeHeight = $waterSize[1];
-    $offsetX = ($left);
-    $offsetY = ($top);
-    $positionY = fmod($offsetY, $waterSizeHeight/$sourceK);
+        for ($offsetX; $offsetX < $sourceWidth;$offsetX += ($watermarkSize[0] + $marginleft)) {
+            $image->overlay($image_watermark, 'top left', $opacity, $offsetX, $top);
 
-    while (abs($positionY) < $imgSize[1]) {
-
-        while ($offsetX < $imgSize[0]) {
-            if ($offsetX < 0) {
-                if (abs($offsetX) > $waterSizeWidth / $sourceK) {
-                    $positionX = fmod($offsetX, $waterSizeWidth / $sourceK);
-                    $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-                    $offsetX = $positionX + $waterSizeWidth + $marginleft;
-                } else {
-                    $positionX = $offsetX;
-                    $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-                    $offsetX += ($waterSizeWidth - abs($positionX)) + $marginleft;
-                }
-            } else {
-                $positionX = $offsetX + $marginleft;
-                $offsetX = $positionX;
-                $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
-                $offsetX = $offsetX + $waterSizeWidth + $marginleft;
-            }
         }
+
         $offsetX = $left;
-        $positionY += $waterSizeHeight + $marginbottom;
     }
+
+
 } elseif ($mode == 'alone') {
     $image->overlay($image_watermark, 'top left', $opacity, $positionX, $positionY);
 }

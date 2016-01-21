@@ -241,11 +241,12 @@
   height: 19px;
 
   &_alone {
-    background-position: -33px -87px;
-    opacity: .7;
+    background-position: -10px -62px;
+    opacity: 0.7;
+    margin-left: 6px;
 
     &.place-button_active {
-      background-position: -10px -87px;
+      background-position: -33px -62px;
       opacity: 1;
 
       &:hover {
@@ -261,9 +262,9 @@
   }
 
   &_tiling {
-    background-position: -10px -62px;
-    opacity: 0.7;
-    margin-left: 6px;
+    background-position: -33px -87px;
+    opacity: .7;
+
 
     &:hover {
       opacity: 1;
@@ -271,8 +272,9 @@
     }
 
     &.place-button_active {
-      background-position: -33px -62px;
+      background-position: -10px -87px;
       opacity: 1;
+
 
       &:hover {
         opacity: 1;

@@ -3,7 +3,6 @@ var wPosition = (function () {
 
     // Module init
     function init() {
-        console.log('[ wPosition works ... ]');
 
         // Set Up Listeners
         _setUpListners();
@@ -109,8 +108,7 @@ var wPosition = (function () {
 
                 $(_var.watermark.tiling).empty();
                 generateTilingBlock();
-                _var.watermark.top = $(_var.watermark.tiling).position().top;
-                _var.watermark.left = $(_var.watermark.tiling).position().left;
+
             }
         });
 
@@ -129,8 +127,8 @@ var wPosition = (function () {
 
             if (currentMode === 'tiling') {
                 _var.mode.current = 'tiling';
-                $(_var.watermark.tiling).fadeIn(200);
-                $(_var.watermark.wrap).fadeOut(200);
+                $(_var.watermark.tiling).fadeIn(0);
+                $(_var.watermark.wrap).fadeOut(0);
 
                 $(_var.watermark.tiling).empty();
                 generateTilingBlock();
@@ -145,25 +143,26 @@ var wPosition = (function () {
                     disabled: true
 
                 });
-                $(_var.coordinates.left).val(_var.watermark.gutterLeft);
-                $(_var.coordinates.top).val(_var.watermark.gutterBottom);
+
                 // Init draggable move watermark by mouse
 
                 $(_var.watermark.tiling).draggable({
                     disabled: false,
                     drag: function (event, ui) {
-                        //console.log($(_var.watermark.tiling).position(), _var.watermark.gutterLeft, _var.watermark.gutterBottom);
-                        _var.watermark.top = $(_var.watermark.tiling).position().top;
-                        _var.watermark.left = $(_var.watermark.tiling).position().left;
                     },
-                    //containment: '.generator__box-tiling-wrap',
+                    stop: function(event, ui) {
+                        getCoordinates();
+                    },
                     containment: [-9999, -9999, 9999, 9999],
                     scroll: false
                 });
 
+                $(_var.coordinates.left).val(_var.watermark.gutterLeft);
+                $(_var.coordinates.top).val(_var.watermark.gutterBottom);
+
             } else {
-                $(_var.watermark.tiling).fadeOut(200);
-                $(_var.watermark.wrap).fadeIn(200);
+                $(_var.watermark.tiling).fadeOut(0);
+                $(_var.watermark.wrap).fadeIn(0);
                 _var.mode.current = 'alone';
                 $('.coords-settings__title').removeClass('coords-settings__title_tiling');
 
@@ -180,6 +179,7 @@ var wPosition = (function () {
                 $(_var.watermark.wrap).draggable({
                     disabled: false
                 });
+                showCoordinates();
             }
         });
     }
@@ -212,8 +212,8 @@ var wPosition = (function () {
             .width((xWatermarkCount + 0.5) * (watermarkWidth + gutterLeft))
             .height((yWatermarkCount + 0.5) * (watermarkHeight + gutterBottom))
             .css({
-                'margin-left': -watermarkWidth,
-                'margin-top': -watermarkHeight
+                'margin-right': -watermarkWidth,
+                'margin-bottom': -watermarkHeight
             });
 
         for (i, l = xWatermarkCount * yWatermarkCount; i < l; i++) {
@@ -223,7 +223,7 @@ var wPosition = (function () {
                 display: 'block',
                 position: 'static',
                 float: 'left',
-                'margin-left': gutterLeft,
+                'margin-right': gutterLeft,
                 'margin-bottom': gutterBottom
             });
 
@@ -283,7 +283,25 @@ var wPosition = (function () {
 
     // Get current watermark coordinates
     function getCoordinates() {
-        return $(_var.watermark.wrap).position();
+
+        if (_var.mode.current == 'alone') {
+            return $(_var.watermark.wrap).position();
+        } else {
+            source = $('.generator__box-source').offset();
+            $('.generator__box-tiling .generator__box-watermark-image').each(function() {
+                $this = $(this);
+                var top = $this.offset().top,
+                    left = $this.offset().left;
+
+                if (((top+_var.watermark.currentHeight) > source.top) && ((left+_var.watermark.currentWidth) > source.left)) {
+                    _var.watermark.top = top-source.top;
+                    _var.watermark.left = left-source.left;
+                    return false;
+                }
+
+            })
+            return $(_var.watermark.wrap).position();
+        }
     }
 
     // Public Methods
