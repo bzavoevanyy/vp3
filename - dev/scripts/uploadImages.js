@@ -36,6 +36,10 @@ var uploadImage = (function () {
                         } else {
                             showMarkImage(serverPath + data.result.filename);
                             _var.watermark.filename = data.result.filename;
+                            $('.place-button_alone').addClass('place-button_active');
+                            $('.settings-block__position-item-link').css("pointer-events", 'auto');
+                            $('.place-button').css("pointer-events", 'auto');
+                            $('.coords-settings__arrow').css("pointer-events", 'auto');
                         }
 
                         // enable other inputs

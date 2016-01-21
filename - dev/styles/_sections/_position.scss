@@ -79,9 +79,12 @@
   &__position-item-link {
     display: block;
     height: 100%;
+    pointer-events: none;
   }
 }
-
+.coords-settings__arrow {
+  pointer-events: none;
+}
 .coords-settings {
   display: block;
   margin-bottom: 11px;
@@ -239,6 +242,7 @@
   background-image: url('../img/sprite.png');
   width: 19px;
   height: 19px;
+  pointer-events: none;
 
   &_alone {
     background-position: -10px -62px;

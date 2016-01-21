@@ -24,6 +24,27 @@ var wPosition = (function () {
             showCoordinates();
         });
 
+        $("#coordX").on('change', function() {
+           if (_var.mode.current == 'alone') {
+               moveWatermark($(this).val(), _var.coordinates.top);
+           } else {
+               _var.watermark.gutterLeft = +$(this).val();
+
+               $(_var.watermark.tiling).empty();
+               generateTilingBlock();
+           }
+        });
+        $("#coordY").on('change', function() {
+            if (_var.mode.current == 'alone') {
+                moveWatermark(_var.coordinates.left, $(this).val());
+            } else {
+                _var.watermark.gutterBottom = +$(this).val();
+
+                $(_var.watermark.tiling).empty();
+                generateTilingBlock();
+            }
+        });
+
         // Position watermark on click by grid
         $(_var.coordinates.inputs).on('click', function (e) {
             e.preventDefault();

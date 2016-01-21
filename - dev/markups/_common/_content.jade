@@ -58,7 +58,7 @@ main.container
             .settings-block__title.settings-block__title_margin Положение
 
             .place-butt
-                #place-button-alone.place-button.place-button_alone.place-button_active
+                #place-button-alone.place-button.place-button_alone
                 #place-button-tiling.place-button.place-button_tiling
 
             .settings-block__position
@@ -76,14 +76,14 @@ main.container
                 label.coords-settings
                     .coords-settings__title.coords-settings__title_x X
                     //.coords-settings__title_arr
-                    input.coords-settings__input(type="text" id="coordX" disabled="disabled" readonly="readonly")
+                    input.coords-settings__input(type="text" id="coordX" disabled="disabled")
                     div(data-axis="x" data-vector="top").coords-settings__arrow.coords-settings__top
                     div(data-axis="x" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
 
                 label.coords-settings
                     .coords-settings__title.coords-settings__title_y Y
                     //.coords-settings__title_arrow
-                    input(type="text" id="coordY" disabled="disabled" readonly="readonly").coords-settings__input
+                    input(type="text" id="coordY" disabled="disabled").coords-settings__input
                     div(data-axis="y" data-vector="top").coords-settings__arrow.coords-settings__top
                     div(data-axis="y" data-vector="bottom").coords-settings__arrow.coords-settings__bottom
             .clearfix

@@ -7,6 +7,7 @@ var enable = (function () {
             $value.removeClass('settings-block_disabled');
             inputs.prop('disabled', false);
         });
+
     }
 
     return {
