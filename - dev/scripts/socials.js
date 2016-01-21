@@ -39,7 +39,7 @@ var imageShare = (function () {
         $('.social__item_tw').on('click', function(e) {
             e.preventDefault();
 
-            var data = 'http://twitter.com/share?url=' + site + '&text=' + disc;
+            var data = 'http://twitter.com/intent/tweet?url=https://www.addwater-mark.com';
             console.log(data);
                 window.open(data);
 
