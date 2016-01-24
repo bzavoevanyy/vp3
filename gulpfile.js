@@ -11,7 +11,8 @@ var
     concat = require('gulp-concat'),
     order = require('gulp-order'),
     del = require('del'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    realFavicon = require ('gulp-real-favicon');
 
 
 /* --------- paths --------- */
@@ -37,8 +38,8 @@ var
         },
 
         favicon: {
-            location: '- dev/favicon/**/*.{png,xml,json,svg,ico}',
-            destination: 'dist/favicon/.'
+            location: '- dev/favicon/favicon.png',
+            destination: 'dist/favicon/'
         },
 
         scss: {
@@ -129,12 +130,49 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest(paths.fonts.destination));
 });
 
-/* --------- favicon copy --------- */
+/* --------- favicon --------- */
 
 gulp.task('favicon', function () {
-    gulp.src(paths.favicon.location)
-        .pipe(plumber())
-        .pipe(gulp.dest(paths.favicon.destination));
+    var FAVICON_DATA_FILE = paths.favicon.destination + 'faviconData.json';
+
+    realFavicon.generateFavicon({
+        masterPicture: paths.favicon.location,
+        dest: paths.favicon.destination,
+        iconsPath: '/',
+        design: {
+            ios: {
+                pictureAspect: 'noChange',
+                appName: 'addwater-mark.com'
+            },
+            desktopBrowser: {},
+            windows: {
+                pictureAspect: 'noChange',
+                backgroundColor: '#da532c',
+                onConflict: 'override',
+                appName: 'addwater-mark.com'
+            },
+            androidChrome: {
+                pictureAspect: 'noChange',
+                themeColor: '#ffffff',
+                manifest: {
+                    name: 'addwater-mark.com',
+                    display: 'browser',
+                    orientation: 'notSet',
+                    onConflict: 'override',
+                    declared: true
+                }
+            },
+            safariPinnedTab: {
+                pictureAspect: 'silhouette',
+                themeColor: '#5bbad5'
+            }
+        },
+        settings: {
+            scalingAlgorithm: 'Mitchell',
+            errorOnImageTooSmall: false
+        },
+        markupFile: FAVICON_DATA_FILE
+    });
 });
 
 /* --------- scss-compass --------- */
@@ -218,80 +256,6 @@ gulp.task('server', function () {
     return gulp.src(paths.server.location)
         .pipe(plumber())
         .pipe(gulp.dest(paths.server.destination));
-});
-
-var realFavicon = require ('gulp-real-favicon');
-var fs = require('fs');
-
-// File where the favicon markups are stored
-var FAVICON_DATA_FILE = 'faviconData.json';
-
-// Generate the icons. This task takes a few seconds to complete.
-// You should run it at least once to create the icons. Then,
-// you should run it whenever RealFaviconGenerator updates its
-// package (see the check-for-favicon-update task below).
-gulp.task('generate-favicon', function(done) {
-    realFavicon.generateFavicon({
-        masterPicture: '- dev/img/icons/watermark_twitter48x48-01_400x400.png',
-        dest: 'dist/img/icons',
-        iconsPath: '/img/icons',
-        design: {
-            ios: {
-                pictureAspect: 'noChange'
-            },
-            desktopBrowser: {},
-            windows: {
-                pictureAspect: 'noChange',
-                backgroundColor: '#da532c',
-                onConflict: 'override'
-            },
-            androidChrome: {
-                pictureAspect: 'noChange',
-                themeColor: '#ffffff',
-                manifest: {
-                    name: 'addwater-mark.com',
-                    display: 'browser',
-                    orientation: 'notSet',
-                    onConflict: 'override',
-                    declared: true
-                }
-            },
-            safariPinnedTab: {
-                pictureAspect: 'blackAndWhite',
-                threshold: 50,
-                themeColor: '#5bbad5'
-            }
-        },
-        settings: {
-            scalingAlgorithm: 'Mitchell',
-            errorOnImageTooSmall: false
-        },
-        markupFile: FAVICON_DATA_FILE
-    }, function() {
-        done();
-    });
-});
-
-// Inject the favicon markups in your HTML pages. You should run
-// this task whenever you modify a page. You can keep this task
-// as is or refactor your existing HTML pipeline.
-gulp.task('inject-favicon-markups', function() {
-    gulp.src([ 'dist/*.html' ])
-        .pipe(realFavicon.injectFaviconMarkups(JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).favicon.html_code))
-        .pipe(gulp.dest('dist'));
-});
-
-// Check for updates on RealFaviconGenerator (think: Apple has just
-// released a new Touch icon along with the latest version of iOS).
-// Run this task from time to time. Ideally, make it part of your
-// continuous integration system.
-gulp.task('check-for-favicon-update', function(done) {
-    var currentVersion = JSON.parse(fs.readFileSync(FAVICON_DATA_FILE)).version;
-    realFavicon.checkForUpdates(currentVersion, function(err) {
-        if (err) {
-            throw err;
-        }
-    });
 });
 
 /* --------- watch --------- */
